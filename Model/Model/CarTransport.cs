@@ -10,7 +10,7 @@ namespace Model
     /// Класс машин
     /// </summary>
     [Serializable]
-    public class CarTransport : ITransport
+    public class CarTransport : ITransport 
     {
         /// <summary>
         /// Наименование машины

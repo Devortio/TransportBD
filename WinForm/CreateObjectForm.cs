@@ -159,7 +159,7 @@ namespace TransportBD
         /// <param name="text"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        private double ConvertToDouble(string text, string fileName)
+        private double ConvertToDouble(string text, string fileName) 
         {
             double view;
             try

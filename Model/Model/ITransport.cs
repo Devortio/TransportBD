@@ -10,7 +10,7 @@ namespace Model
     /// <summary>
     /// 
     /// </summary>
-    public interface ITransport
+    public interface ITransport 
     {
         /// <summary>
         /// Акцессор получения марки транспортного средства

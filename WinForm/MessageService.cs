@@ -22,7 +22,7 @@ namespace TransportBD
         /// Предупреждение
         /// </summary>
         /// <param name="exclamation"></param>
-        public void ShowExclamation(string exclamation)
+        public void ShowExclamation(string exclamation) 
         {
             MessageBox.Show(exclamation, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }

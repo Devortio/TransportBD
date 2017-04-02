@@ -20,7 +20,7 @@ namespace TransportBD
             }
         }
 
-        public static List<ITransport> Deserialize(string filePath)
+        public static List<ITransport> Deserialize(string filePath) 
         {
             var formatter = new BinaryFormatter();
 

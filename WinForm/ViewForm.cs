@@ -202,7 +202,7 @@ namespace TransportBD
 
             if (_pointFixer != true)
             {
-                DialogResult dialogResult = MessageBox.Show(
+                DialogResult dialogResult = MessageBox.Show( 
                     "Сохранить изменения ?", "Предупреждение",
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Exclamation);

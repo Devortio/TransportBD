@@ -14,7 +14,7 @@ namespace TransportBD
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ViewForm form = new ViewForm();         
-            Application.Run(form);
+            Application.Run(form); 
         }
     }
 }

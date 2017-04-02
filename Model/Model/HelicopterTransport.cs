@@ -10,7 +10,7 @@ namespace Model
     /// Класс вертолетов
     /// </summary>
     [Serializable]
-    public class HelicopterTransport : ITransport
+    public class HelicopterTransport : ITransport 
     {
         /// <summary>
         /// Модель вертолета
