@@ -277,7 +277,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateObjectForm";
             this.Text = "TransportBD";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateObjectForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

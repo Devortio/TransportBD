@@ -28,31 +28,39 @@ namespace TransportBD
         {
             get
             {
-                if (radioButtonCar.Checked == true)
+                if (radioButtonCar.Checked)
                 {
-                    CarTransport car = new CarTransport();
-                    car.Mark = textBoxMark.Text;
-                    car.Wear = ConvertToDouble(textBoxWear.Text, labelWear.Text);
-                    car.FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text, labelFuelConsumption.Text);
-                    car.Speed = ConvertToDouble(textBoxSpeed.Text, labelSpeed.Text);
-                    car.CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text, labelCurrentVolume.Text);
-                    car.TypeFuel = (TypeFuel)Enum.Parse(typeof(TypeFuel), comboBoxTypeFuel.Text);
-                    return car;
-
+                    return new CarTransport
+                    {
+                        Mark = textBoxMark.Text,
+                        Wear = ConvertToDouble(textBoxWear.Text,
+                            labelWear.Text),
+                        FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,
+                            labelFuelConsumption.Text),
+                        Speed = ConvertToDouble(textBoxSpeed.Text,
+                            labelSpeed.Text),
+                        CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,
+                            labelCurrentVolume.Text),
+                        TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),
+                            comboBoxTypeFuel.Text)
+                    };
                 }
-
-                else
+                return new HelicopterTransport
                 {
-                    HelicopterTransport helicopter = new HelicopterTransport();
-                    helicopter.Mark = textBoxMark.Text;
-                    helicopter.Wear = ConvertToDouble(textBoxWear.Text, labelWear.Text);
-                    helicopter.FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text, labelFuelConsumption.Text);
-                    helicopter.Speed = ConvertToDouble(textBoxSpeed.Text, labelSpeed.Text);
-                    helicopter.CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text, labelCurrentVolume.Text);
-                    helicopter.TypeFuel = (TypeFuel)Enum.Parse(typeof(TypeFuel), comboBoxTypeFuel.Text);
-                    helicopter.FuelDensity = ConvertToDouble(textBoxFuelDensity.Text, labelFuelDensity.Text);
-                    return helicopter;
-                }
+                    Mark = textBoxMark.Text,
+                    Wear = ConvertToDouble(textBoxWear.Text,
+                        labelWear.Text),
+                    FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,
+                        labelFuelConsumption.Text),
+                    Speed = ConvertToDouble(textBoxSpeed.Text,
+                        labelSpeed.Text),
+                    CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,
+                        labelCurrentVolume.Text),
+                    TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),
+                        comboBoxTypeFuel.Text),
+                    FuelDensity = ConvertToDouble(textBoxFuelDensity.Text,
+                        labelFuelDensity.Text)
+                };
             }
             set
             {
@@ -69,8 +77,7 @@ namespace TransportBD
                 }
                 else
                 {
-                    HelicopterTransport transport = new HelicopterTransport();
-                    transport = (HelicopterTransport)value;
+                    var transport = (HelicopterTransport)value;
                     textBoxMark.Text = Convert.ToString(transport.Mark);
                     textBoxCurrentVolume.Text = Convert.ToString(transport.CurrentVolume);
                     textBoxFuelConsumption.Text = Convert.ToString(transport.FuelConsumption);
@@ -183,59 +190,34 @@ namespace TransportBD
             Close();
         }
 //------------------------------------------------- Подсказки ----------------------------------------------------------------//
-        private void CreateObjectForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
         
         private void textBoxMark_MouseLeave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxMark.Text))
-            {
-                errorProvider.SetError(textBoxMark, "Название транспорта должно содержать буквы.");
-            }
-            else
-            {
-                errorProvider.SetError(textBoxMark, null);
-            }
+            errorProvider.SetError(textBoxMark,
+                string.IsNullOrEmpty(textBoxMark.Text) ? "Название транспорта должно содержать буквы." : null);
         }
 
         private void textBoxWear_MouseLeave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxWear.Text))
-            {
-                errorProvider.SetError(textBoxWear, "Значение лежит в диапозоне от 0 до 100 %.");
-            }
-            else
-            {
-                errorProvider.SetError(textBoxWear, null);
-            }
-
+            errorProvider.SetError(textBoxWear,
+                string.IsNullOrEmpty(textBoxWear.Text) ? "Значение лежит в диапозоне от 0 до 100 %." : null);
         }
 
         private void textBoxFuelConsumption_MouseLeave(object sender, EventArgs e)
         {
             if (radioButtonCar.Checked == true)
             {
-                if (string.IsNullOrEmpty(textBoxFuelConsumption.Text))
-                {
-                    errorProvider.SetError(textBoxFuelConsumption, "Значение лежит в диапозоне от 1 до 40 л/км.");
-                }
-                else
-                {
-                    errorProvider.SetError(textBoxFuelConsumption, null);
-                }
+                errorProvider.SetError(textBoxFuelConsumption,
+                    string.IsNullOrEmpty(textBoxFuelConsumption.Text)
+                        ? "Значение лежит в диапозоне от 1 до 40 л/км."
+                        : null);
             }
             else
             {
-                if (string.IsNullOrEmpty(textBoxFuelConsumption.Text))
-                {
-                    errorProvider.SetError(textBoxFuelConsumption, "Значение лежит в диапозоне от 1 до 200 л/ч.");
-                }
-                else
-                {
-                    errorProvider.SetError(textBoxFuelConsumption, null);
-                }
+                errorProvider.SetError(textBoxFuelConsumption,
+                    string.IsNullOrEmpty(textBoxFuelConsumption.Text)
+                        ? "Значение лежит в диапозоне от 1 до 200 л/ч."
+                        : null);
             }
         }
 
@@ -243,76 +225,44 @@ namespace TransportBD
         {
             if (radioButtonCar.Checked == true)
             {
-                if (string.IsNullOrEmpty(textBoxSpeed.Text))
-                {
-                    errorProvider.SetError(textBoxSpeed, "Значение лежит в диапозоне от 1 до 300 км/ч.");
-                }
-                else
-                {
-                    errorProvider.SetError(textBoxSpeed, null);
-                }
+                errorProvider.SetError(textBoxSpeed,
+                    string.IsNullOrEmpty(textBoxSpeed.Text) ? "Значение лежит в диапозоне от 1 до 300 км/ч." : null);
             }
             else
             {
-                if (string.IsNullOrEmpty(textBoxSpeed.Text))
-                {
-                    errorProvider.SetError(textBoxSpeed, "Значение лежит в диапозоне от 1 до 400 км/ч.");
-                }
-                else
-                {
-                    errorProvider.SetError(textBoxSpeed, null);
-                }
+                errorProvider.SetError(textBoxSpeed,
+                    string.IsNullOrEmpty(textBoxSpeed.Text) ? "Значение лежит в диапозоне от 1 до 400 км/ч." : null);
             }
         }
 
         private void textBoxCurrentVolume_MouseLeave(object sender, EventArgs e)
         {
-            if (radioButtonCar.Checked == true)
+            if (radioButtonCar.Checked)
             {
-                if (string.IsNullOrEmpty(textBoxCurrentVolume.Text))
-                {
-                    errorProvider.SetError(textBoxCurrentVolume, "Значение лежит в диапозоне от 1 до 1000 л.");
-                }
-                else
-                {
-                    errorProvider.SetError(textBoxCurrentVolume, null);
-                }
+                errorProvider.SetError(textBoxCurrentVolume,
+                    string.IsNullOrEmpty(textBoxCurrentVolume.Text)
+                        ? "Значение лежит в диапозоне от 1 до 1000 л."
+                        : null);
             }
             else
             {
-                if (string.IsNullOrEmpty(textBoxCurrentVolume.Text))
-                {
-                    errorProvider.SetError(textBoxCurrentVolume, "Значение лежит в диапозоне от 1 до 10000 л.");
-                }
-                else
-                {
-                    errorProvider.SetError(textBoxCurrentVolume, null);
-                }
+                errorProvider.SetError(textBoxCurrentVolume,
+                    string.IsNullOrEmpty(textBoxCurrentVolume.Text)
+                        ? "Значение лежит в диапозоне от 1 до 10000 л."
+                        : null);
             }
         }
 
         private void textBoxFuelDensity_MouseLeave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxFuelDensity.Text))
-            {
-                errorProvider.SetError(textBoxFuelDensity, "Значение лежит в диапозоне от 0 до 10");
-            }
-            else
-            {
-                errorProvider.SetError(textBoxFuelDensity, null);
-            }
+            errorProvider.SetError(textBoxFuelDensity,
+                string.IsNullOrEmpty(textBoxFuelDensity.Text) ? "Значение лежит в диапозоне от 0 до 10" : null);
         }
 
         private void comboBoxTypeFuel_MouseLeave(object sender, EventArgs e)
         {
-            if(comboBoxTypeFuel.SelectedIndex==-1)
-            {
-                errorProvider.SetError(comboBoxTypeFuel, "Выберите тип топлива.");
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxTypeFuel, null);
-            }
+            errorProvider.SetError(comboBoxTypeFuel,
+                comboBoxTypeFuel.SelectedIndex == -1 ? "Выберите тип топлива." : null);
         }
 //------------------------------------------------- Подсказки ----------------------------------------------------------------//
     }

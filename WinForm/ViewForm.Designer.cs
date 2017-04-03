@@ -32,6 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewForm));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridContent = new System.Windows.Forms.DataGridView();
+            this.fuelValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iTransportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +50,7 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,15 +61,8 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.comboBoxSearch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.fuelValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeFuelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonReset = new System.Windows.Forms.Button();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -101,6 +102,55 @@
             this.dataGridContent.Size = new System.Drawing.Size(705, 181);
             this.dataGridContent.TabIndex = 7;
             // 
+            // fuelValueDataGridViewTextBoxColumn
+            // 
+            this.fuelValueDataGridViewTextBoxColumn.DataPropertyName = "FuelValue";
+            this.fuelValueDataGridViewTextBoxColumn.HeaderText = "Затрачиваемое топливо";
+            this.fuelValueDataGridViewTextBoxColumn.Name = "fuelValueDataGridViewTextBoxColumn";
+            this.fuelValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // markDataGridViewTextBoxColumn
+            // 
+            this.markDataGridViewTextBoxColumn.DataPropertyName = "Mark";
+            this.markDataGridViewTextBoxColumn.HeaderText = "Марка";
+            this.markDataGridViewTextBoxColumn.Name = "markDataGridViewTextBoxColumn";
+            this.markDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wearDataGridViewTextBoxColumn
+            // 
+            this.wearDataGridViewTextBoxColumn.DataPropertyName = "Wear";
+            this.wearDataGridViewTextBoxColumn.HeaderText = "Степень износа";
+            this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
+            this.wearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fuelConsumptionDataGridViewTextBoxColumn
+            // 
+            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
+            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
+            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
+            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speedDataGridViewTextBoxColumn
+            // 
+            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
+            this.speedDataGridViewTextBoxColumn.HeaderText = "Скорость";
+            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
+            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currentVolumeDataGridViewTextBoxColumn
+            // 
+            this.currentVolumeDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolume";
+            this.currentVolumeDataGridViewTextBoxColumn.HeaderText = "Объем бака";
+            this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
+            this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeFuelDataGridViewTextBoxColumn
+            // 
+            this.typeFuelDataGridViewTextBoxColumn.DataPropertyName = "TypeFuel";
+            this.typeFuelDataGridViewTextBoxColumn.HeaderText = "Тип топлива";
+            this.typeFuelDataGridViewTextBoxColumn.Name = "typeFuelDataGridViewTextBoxColumn";
+            this.typeFuelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // iTransportBindingSource
             // 
             this.iTransportBindingSource.DataSource = typeof(Model.ITransport);
@@ -126,7 +176,8 @@
             this.createToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileToolStripMenuItem.Text = "Файл";
@@ -180,21 +231,28 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.addToolStripMenuItem.Text = "Добавить";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.changeToolStripMenuItem.Text = "Изменить";
             this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.resetToolStripMenuItem.Text = "Обновить";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.deleteToolStripMenuItem1.Text = "Удалить";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
@@ -291,55 +349,6 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Поле поиска:";
             // 
-            // fuelValueDataGridViewTextBoxColumn
-            // 
-            this.fuelValueDataGridViewTextBoxColumn.DataPropertyName = "FuelValue";
-            this.fuelValueDataGridViewTextBoxColumn.HeaderText = "Затрачиваемое топливо";
-            this.fuelValueDataGridViewTextBoxColumn.Name = "fuelValueDataGridViewTextBoxColumn";
-            this.fuelValueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // markDataGridViewTextBoxColumn
-            // 
-            this.markDataGridViewTextBoxColumn.DataPropertyName = "Mark";
-            this.markDataGridViewTextBoxColumn.HeaderText = "Марка";
-            this.markDataGridViewTextBoxColumn.Name = "markDataGridViewTextBoxColumn";
-            this.markDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // wearDataGridViewTextBoxColumn
-            // 
-            this.wearDataGridViewTextBoxColumn.DataPropertyName = "Wear";
-            this.wearDataGridViewTextBoxColumn.HeaderText = "Степень износа";
-            this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
-            this.wearDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fuelConsumptionDataGridViewTextBoxColumn
-            // 
-            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
-            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
-            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
-            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speedDataGridViewTextBoxColumn
-            // 
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Скорость";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currentVolumeDataGridViewTextBoxColumn
-            // 
-            this.currentVolumeDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolume";
-            this.currentVolumeDataGridViewTextBoxColumn.HeaderText = "Объем бака";
-            this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
-            this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typeFuelDataGridViewTextBoxColumn
-            // 
-            this.typeFuelDataGridViewTextBoxColumn.DataPropertyName = "TypeFuel";
-            this.typeFuelDataGridViewTextBoxColumn.HeaderText = "Тип топлива";
-            this.typeFuelDataGridViewTextBoxColumn.Name = "typeFuelDataGridViewTextBoxColumn";
-            this.typeFuelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // buttonReset
             // 
             this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -351,12 +360,10 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // resetToolStripMenuItem
+            // toolStripMenuItem1
             // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resetToolStripMenuItem.Text = "Обновить";
-            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
             // 
             // ViewForm
             // 
@@ -421,6 +428,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn typeFuelDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
