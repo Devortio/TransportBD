@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using Model;
 
@@ -16,17 +17,18 @@ namespace TransportBD
         {
             InitializeComponent();
             _pointFixer = true;
+            iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
         }
 
         private void PointFixer(bool pointFixer)
         {
             if (pointFixer ==false)
             {
-                this.Text = "TransportBD*";
+                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) +"* - " + "TransportBD";
             }
             else
             {
-                this.Text = "TransportBD";
+                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - " + "TransportBD";
             }
         }
 
@@ -46,6 +48,7 @@ namespace TransportBD
                     _filePath = ofd.FileName;
                     _transportList = Serialization.Deserialize(_filePath);
                     iTransportBindingSource.DataSource = _transportList;
+                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - " + "TransportBD";
                 }
             }
         }
@@ -159,7 +162,6 @@ namespace TransportBD
         {
             if (_filePath != null)
             {
-                _transportList.Remove((ITransport)iTransportBindingSource.Current);
                 iTransportBindingSource.Remove(iTransportBindingSource.Current);
                 PointFixer(_pointFixer = false);
             }
@@ -209,8 +211,7 @@ namespace TransportBD
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Serialization.Serialize(_filePath, _transportList);
-                    _messageServices.ShowMessage("Сохранение прошло успешно.");
+                    Save();
                 }
                 else if(dialogResult == DialogResult.Cancel)
                 {
@@ -268,7 +269,6 @@ namespace TransportBD
         {
             if (iTransportBindingSource.Current != null)
             {
-                _transportList.Remove((ITransport)iTransportBindingSource.Current);
                 iTransportBindingSource.Remove(iTransportBindingSource.Current);
                 PointFixer(_pointFixer = false);
             }

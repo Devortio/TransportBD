@@ -142,7 +142,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model\Model.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{3da4c52e-7e26-4458-ac79-b80293893dba}</Project>
       <Name>Model</Name>
     </ProjectReference>
