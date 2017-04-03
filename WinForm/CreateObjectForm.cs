@@ -12,13 +12,7 @@ namespace TransportBD
         public CreateObjectForm()
         {
             InitializeComponent();
-            textBoxCurrentVolume.Enabled = false;
-            textBoxFuelConsumption.Enabled = false;
-            textBoxMark.Enabled = false;
-            textBoxSpeed.Enabled = false;
-            textBoxWear.Enabled = false;
-            comboBoxTypeFuel.Enabled = false;
-            textBoxFuelDensity.Visible = false;
+            ItemsEnable(false);
         }
 
         /// <summary>
@@ -86,13 +80,8 @@ namespace TransportBD
         /// <param name="e"></param>
         private void radioButtonCar_CheckedChanged(object sender, EventArgs e)
         {
+            ItemsEnable(true);
             labelFuelDensity.Visible = false;
-            textBoxCurrentVolume.Enabled = true;
-            textBoxFuelConsumption.Enabled = true;
-            textBoxMark.Enabled = true;
-            textBoxSpeed.Enabled = true;
-            textBoxWear.Enabled = true;
-            comboBoxTypeFuel.Enabled = true;
             textBoxFuelDensity.Visible = false;    
         }
 
@@ -103,14 +92,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void radioButtonHelicopter_CheckedChanged(object sender, EventArgs e)
         {
-            labelFuelDensity.Visible = true;
-            textBoxFuelDensity.Visible = true;
-            textBoxCurrentVolume.Enabled = true;
-            textBoxFuelConsumption.Enabled = true;
-            textBoxMark.Enabled = true;
-            textBoxSpeed.Enabled = true;
-            textBoxWear.Enabled = true;
-            comboBoxTypeFuel.Enabled = true;
+            ItemsEnable(true);
         }
 
         /// <summary>
@@ -177,6 +159,22 @@ namespace TransportBD
         private void cofCancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        /// <summary>
+        /// Отображение контролов на форме
+        /// </summary>
+        /// <param name="itemsEnable"></param>
+        private void ItemsEnable(bool itemsEnable)
+        {
+            textBoxCurrentVolume.Enabled = itemsEnable;
+            textBoxFuelConsumption.Enabled = itemsEnable;
+            textBoxMark.Enabled = itemsEnable;
+            textBoxSpeed.Enabled = itemsEnable;
+            textBoxWear.Enabled = itemsEnable;
+            comboBoxTypeFuel.Enabled = itemsEnable;
+            textBoxFuelDensity.Visible = itemsEnable;
+            labelFuelDensity.Visible = itemsEnable;
         }
 //------------------------------------------------- Подсказки ----------------------------------------------------------------//
         
