@@ -17,18 +17,21 @@ namespace TransportBD
         {
             InitializeComponent();
             _pointFixer = true;
-            iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
         }
 
+        /// <summary>
+        /// Фиксатор изменений
+        /// </summary>
+        /// <param name="pointFixer"></param>
         private void PointFixer(bool pointFixer)
         {
             if (pointFixer ==false)
             {
-                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) +"* - " + "TransportBD";
+                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) +"* - TransportBD";
             }
             else
             {
-                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - " + "TransportBD";
+                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - TransportBD";
             }
         }
 
@@ -39,8 +42,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Файлы|*.tdb|Все файлы|*.*";
+            var ofd = new OpenFileDialog {Filter = "Файлы|*.tdb|Все файлы|*.*"};
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 if (ofd.FileName != null)
@@ -48,7 +50,7 @@ namespace TransportBD
                     _filePath = ofd.FileName;
                     _transportList = Serialization.Deserialize(_filePath);
                     iTransportBindingSource.DataSource = _transportList;
-                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - " + "TransportBD";
+                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - TransportBD";
                 }
             }
         }
@@ -70,21 +72,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (iTransportBindingSource.Current != null)
-            {
-                CreateObjectForm cof = new CreateObjectForm();
-                int index = iTransportBindingSource.IndexOf(iTransportBindingSource.Current);
-                cof.Transport = (ITransport)iTransportBindingSource.Current;
-                iTransportBindingSource.RemoveAt(index);
-                cof.ShowDialog();
-                var transport = cof.Transport;
-                iTransportBindingSource.Insert(index, transport);
-                PointFixer(_pointFixer = false);
-            }
-            else
-            {
-                _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
-            }
+            Change();
         }
 
         /// <summary>
@@ -95,7 +83,7 @@ namespace TransportBD
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-                SaveFileDialog sfd = new SaveFileDialog();
+                var sfd = new SaveFileDialog();
                 sfd.Filter = "Файлы|*.tdb|Все файлы|*.*";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -114,13 +102,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateObjectForm cof = new CreateObjectForm();
-            if (cof.ShowDialog() == DialogResult.OK)
-            {
-                PointFixer(_pointFixer = false);
-                var transport = cof.Transport;
-                iTransportBindingSource.Add(transport);
-            }
+            Add();
         }
 
         /// <summary>
@@ -144,12 +126,12 @@ namespace TransportBD
             {
                 Save();
                 _filePath = null;
-                iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
+                iTransportBindingSource.DataSource = _transportList = null;
             }
             else
             {
                 _filePath = null;
-                iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
+                iTransportBindingSource.DataSource = _transportList = null;
             }
         }
 
@@ -160,16 +142,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (_filePath != null)
-            {
-                iTransportBindingSource.Remove(iTransportBindingSource.Current);
-                PointFixer(_pointFixer = false);
-            }
-            else
-            {
-                _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
-            }
-           
+            Delete();
         }
 
         /// <summary>
@@ -179,7 +152,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutForm af=new AboutForm();
+            var af=new AboutForm();
             af.ShowDialog();
         }
 
@@ -190,7 +163,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HelpForm hf = new HelpForm();
+            var hf = new HelpForm();
             hf.ShowDialog();
         }
 
@@ -209,13 +182,14 @@ namespace TransportBD
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Exclamation);
 
-                if (dialogResult == DialogResult.Yes)
+                switch (dialogResult)
                 {
-                    Save();
-                }
-                else if(dialogResult == DialogResult.Cancel)
-                {
-                    e.Cancel = true;
+                    case DialogResult.Yes:
+                        Save();
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
                 }
             }
         }
@@ -227,13 +201,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            CreateObjectForm cof = new CreateObjectForm();
-            if (cof.ShowDialog() == DialogResult.OK)
-            {
-                PointFixer(_pointFixer = false);
-                var transport = cof.Transport;
-                iTransportBindingSource.Add(transport);
-            }           
+            Add();
         }
 
         /// <summary>
@@ -243,21 +211,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (iTransportBindingSource.Current != null)
-            {
-                CreateObjectForm cof = new CreateObjectForm();
-                int index = iTransportBindingSource.IndexOf(iTransportBindingSource.Current);
-                cof.Transport = (ITransport)iTransportBindingSource.Current;
-                iTransportBindingSource.RemoveAt(index);
-                cof.ShowDialog();
-                var transport = cof.Transport;
-                iTransportBindingSource.Insert(index, transport);
-                PointFixer(_pointFixer = false);
-            }
-            else
-            {
-                _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
-            }
+            Change();
         }
 
         /// <summary>
@@ -267,15 +221,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (iTransportBindingSource.Current != null)
-            {
-                iTransportBindingSource.Remove(iTransportBindingSource.Current);
-                PointFixer(_pointFixer = false);
-            }
-            else
-            {
-                _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
-            }
+            Delete();
         }
 
         /// <summary>
@@ -294,50 +240,38 @@ namespace TransportBD
                     {
                         case "Марка":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate(ITransport transport)
-                            {
-                                return transport.Mark == searchLine;
-                            });
+                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.Mark == searchLine);
                             break;
                         }
                         case "Скорость":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate(ITransport transport)
-                            {
-                                return transport.Speed.ToString() == searchLine;
-                            });
+                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.Speed.ToString() == searchLine);
                             break;
                         }
                         case "Степень износа":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate(ITransport transport)
-                            {
-                                return transport.Wear.ToString() == searchLine;
-                            });
+                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.Wear.ToString() == searchLine);
                             break;
                         }
                         case "Объем бака":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate(ITransport transport)
-                            {
-                                return transport.CurrentVolume.ToString() == searchLine;
-                            });
+                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.CurrentVolume.ToString() == searchLine);
                             break;
                         }
                         case "Тип топлива":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate(ITransport transport)
-                            {
-                                return transport.TypeFuel.ToString() == searchLine;
-                            });
+                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.TypeFuel.ToString() == searchLine);
                             break;
                         }
                         case "Расход топлива":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate(ITransport transport)
-                            {
-                                return transport.FuelConsumption.ToString() == searchLine;
-                            });
+                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.FuelConsumption.ToString() == searchLine);
                             break;
                         }
                     }
@@ -366,7 +300,7 @@ namespace TransportBD
             }
             else
             {
-                SaveFileDialog sfd = new SaveFileDialog();
+                var sfd = new SaveFileDialog();
                 sfd.Filter = "Файлы|*.tdb|Все файлы|*.*";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -375,6 +309,58 @@ namespace TransportBD
                     _messageServices.ShowMessage("Сохранение прошло успешно.");
                     PointFixer(_pointFixer = true);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Метод Изменений
+        /// </summary>
+        private void Change()
+        {
+            if (iTransportBindingSource.Current != null)
+            {
+                var cof = new CreateObjectForm();
+                var index = iTransportBindingSource.IndexOf(iTransportBindingSource.Current);
+                cof.Transport = (ITransport)iTransportBindingSource.Current;
+                iTransportBindingSource.RemoveAt(index);
+                cof.ShowDialog();
+                var transport = cof.Transport;
+                iTransportBindingSource.Insert(index, transport);
+                PointFixer(_pointFixer = false);
+            }
+            else
+            {
+                _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
+            }
+        }
+
+        /// <summary>
+        /// Метод Добавления
+        /// </summary>
+        private void Add()
+        {
+            var cof = new CreateObjectForm();
+            if (cof.ShowDialog() == DialogResult.OK)
+            {
+                PointFixer(_pointFixer = false);
+                var transport = cof.Transport;
+                iTransportBindingSource.Add(transport);
+            }
+        }
+
+        /// <summary>
+        /// Метод Удаления
+        /// </summary>
+        private void Delete()
+        {
+            if (iTransportBindingSource.Current != null)
+            {
+                iTransportBindingSource.Remove(iTransportBindingSource.Current);
+                PointFixer(_pointFixer = false);
+            }
+            else
+            {
+                _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
             }
         }
 
