@@ -7,33 +7,33 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// Класс машин
+    /// Класс Машина
     /// </summary>
     [Serializable]
     public class CarTransport : ITransport 
     {
         /// <summary>
-        /// Наименование машины
+        /// Марка
         /// </summary>
         private string _mark;
         /// <summary>
-        /// Процент износ машины
+        /// Процент износа
         /// </summary>
         private double _wear;
         /// <summary>
-        /// Расход топлива машины
+        /// Расход топлива
         /// </summary>
         private double _fuelConsumption;
         /// <summary>
-        /// Скорость машины
+        /// Скорость
         /// </summary>
         private double _speed;
         /// <summary>
-        /// Емкость бака машины
+        /// Объем топливного бака
         /// </summary>
         private double _currentVolume;
         /// <summary>
-        /// Тип топлива машины
+        /// Тип топлива
         /// </summary>
         private TypeFuel _typeFuel;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Model
         /// </summary>
         private double _fuelValue;
         /// <summary>
-        /// Акцессор получения значения затрачиваемого топлива
+        /// Затрачиваемое колиество топлива
         /// </summary>
         public double FuelValue
         {
@@ -52,11 +52,11 @@ namespace Model
         /// <summary>
         /// Конструктор класса CarTransport
         /// </summary>
-        /// <param name="mark"> Название транспортного средства </param>
+        /// <param name="mark"> Марка </param>
         /// <param name="typefuel"> Тип топлива </param>
         /// <param name="wear"> Процент износа </param>
         /// <param name="fuelconsumption"> Расход топлива </param>
-        /// <param name="speed"> Скорость транспорного средства </param>
+        /// <param name="speed"> Скорость </param>
         /// <param name="currentvolume"> Объем топливного бака </param>
         public CarTransport(string mark, TypeFuel typefuel, double wear, double fuelconsumption, double speed, double currentvolume)
         {
@@ -77,7 +77,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения марки транспортного средства
+        /// Марка
         /// </summary>
         public string Mark
         {
@@ -92,9 +92,9 @@ namespace Model
                 else
                 {
                     value = value.Trim();
-                    for (int i = 0; i < value.Length; i++)
+                    foreach (var i in value)
                     {
-                        if (!Char.IsLetter(value[i]))
+                        if (!Char.IsLetter(i))
                         {
                             throw new ArgumentException (
                                 "Неверно указана название транспортного средства, значение должно содержать только буквы.");
@@ -106,7 +106,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения износа транспортного средства
+        /// Износ
         /// </summary>
         public double Wear
         {
@@ -126,7 +126,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения расхода топлива транспортным средством на один киллометр
+        /// Расход топлива
         /// </summary>
         public double FuelConsumption
         {
@@ -146,7 +146,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения значения скорости траспортного средства
+        /// Скорость
         /// </summary>
         public double Speed
         {
@@ -166,7 +166,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения заполненности бака транспортного средства
+        /// Объем топливного бака
         /// </summary>
         public double CurrentVolume
         {
@@ -186,7 +186,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения типа топлива транспортного средства
+        /// Тип топлива
         /// </summary>
         public TypeFuel TypeFuel
         {
@@ -207,10 +207,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Метод расчитывает вероятность выезда транспортного средства
+        /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик
         /// </summary>
-        /// <returns> Метод возвращает true/false. Сможет проехать данное траспортное средство некоторое растояние
-        /// в зависимости от некоторых ключевых факторов</returns>
+        /// <returns> Метод возвращает true/false. </returns>
         public void IsCanBeOvercomeDistance(double distance)
         {
             //Коэффициент коррекции расхода топлива на 1 км

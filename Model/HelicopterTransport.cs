@@ -7,38 +7,38 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// Класс вертолетов
+    /// Класс Вертолет
     /// </summary>
     [Serializable]
     public class HelicopterTransport : ITransport 
     {
         /// <summary>
-        /// Модель вертолета
+        /// Марка
         /// </summary>
         private string _mark;
 
         /// <summary>
-        /// Процент износ вертолета
+        /// Процент износ
         /// </summary>
         private double _wear;
 
         /// <summary>
-        /// Расход топлива вертолета
+        /// Расход топлива
         /// </summary>
         private double _fuelConsumption;
 
         /// <summary>
-        /// Скорость вертолета
+        /// Скорость
         /// </summary>
         private double _speed;
 
         /// <summary>
-        /// Емкость бака вертолета
+        /// Объем топливного бака
         /// </summary>
         private double _currentVolume;
 
         /// <summary>
-        /// Тип топлива вертолета
+        /// Тип топлива
         /// </summary>
         private TypeFuel _typeFuel;
 
@@ -53,13 +53,13 @@ namespace Model
         private double _fuelValue;
 
         /// <summary>
-        /// Конструктор класса CarTransport
+        /// Конструктор класса HelicopterTransport
         /// </summary>
-        /// <param name="mark"> Название транспортного средства </param>
+        /// <param name="mark"> Марка </param>
         /// <param name="typefuel"> Тип топлива </param>
         /// <param name="wear"> Процент износа </param>
         /// <param name="fuelconsumption"> Расход топлива </param>
-        /// <param name="speed"> Скорость транспорного средства </param>
+        /// <param name="speed"> Скорость </param>
         /// <param name="currentvolume"> Объем топливного бака </param>
         /// <param name="fueldensity"> Плотность топлива </param>
         public HelicopterTransport(string mark, TypeFuel typefuel, double wear, double fuelconsumption, double speed,
@@ -83,7 +83,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения плотности топлива траспорного средства 
+        /// Плотность топлива
         /// </summary>
         public double FuelDensity
         {
@@ -103,7 +103,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения необходимого топлива 
+        /// Необходимое количество топлива 
         /// </summary>
         public double FuelValue
         {
@@ -112,7 +112,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения марки транспортного средства
+        /// Марка
         /// </summary>
         public string Mark
         {
@@ -133,7 +133,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения износа транспортного средства
+        /// Износ
         /// </summary>
         public double Wear
         {
@@ -153,7 +153,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения расхода топлива транспортным средством на один киллометр
+        /// Расход топлива
         /// </summary>
         public double FuelConsumption
         {
@@ -173,7 +173,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения значения скорости траспортного средства
+        /// Скорость
         /// </summary>
         public double Speed
         {
@@ -193,7 +193,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения заполненности бака транспортного средства
+        /// Объем топливного бака
         /// </summary>
         public double CurrentVolume
         {
@@ -213,7 +213,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Акцессор получения типа топлива транспортного средства
+        /// Типа топлива
         /// </summary>
         public TypeFuel TypeFuel
         {
@@ -234,10 +234,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Метод расчитывает вероятность выезда транспортного средства
+        /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик
         /// </summary>
-        /// <returns> Метод возвращает true/false. Сможет проехать данное траспортное средство некоторое растояние
-        /// в зависимости от некоторых ключевых факторов</returns>
+        /// <returns> Метод возвращает true/false</returns>
         public void IsCanBeOvercomeDistance(double distance)
         {
             //Коэффициент коррекции расхода топлива на 1 км
