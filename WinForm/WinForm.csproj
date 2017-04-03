@@ -80,6 +80,7 @@
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageService.cs" />
+    <Compile Include="RecentFilesSubmenu.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="ViewForm.cs">
       <SubType>Form</SubType>
