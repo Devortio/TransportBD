@@ -17,6 +17,7 @@ namespace TransportBD
         {
             InitializeComponent();
             _pointFixer = true;
+            ItemsEnable(false);
         }
 
         /// <summary>
@@ -51,6 +52,7 @@ namespace TransportBD
                     _transportList = Serialization.Deserialize(_filePath);
                     iTransportBindingSource.DataSource = _transportList;
                     this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - TransportBD";
+                    ItemsEnable(true);
                 }
             }
         }
@@ -122,16 +124,17 @@ namespace TransportBD
         /// <param name="e"></param>
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ItemsEnable(true);
             if ((_transportList != null) && (_pointFixer != true))
             {
                 Save();
                 _filePath = null;
-                iTransportBindingSource.DataSource = _transportList = null;
+                iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
             }
             else
             {
                 _filePath = null;
-                iTransportBindingSource.DataSource = _transportList = null;
+                iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
             }
         }
 
@@ -362,6 +365,21 @@ namespace TransportBD
             {
                 _messageServices.ShowError("Не выбрана запись. Выберите запись и повторите попытку.");
             }
+        }
+
+        /// <summary>
+        /// Отображение контролов на форме
+        /// </summary>
+        /// <param name="itemsEnable"></param>
+        private void ItemsEnable(bool itemsEnable)
+        {
+            buttonAdd.Enabled = itemsEnable;
+            buttonChange.Enabled = itemsEnable;
+            buttonDelete.Enabled = itemsEnable;
+            buttonReset.Enabled = itemsEnable;
+            buttonSearch.Enabled = itemsEnable;
+            comboBoxSearch.Enabled = itemsEnable;
+            textBoxSearch.Enabled = itemsEnable;
         }
 
         /// <summary>
