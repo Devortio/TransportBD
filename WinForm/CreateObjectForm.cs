@@ -33,33 +33,22 @@ namespace TransportBD
                     return new CarTransport
                     {
                         Mark = textBoxMark.Text,
-                        Wear = ConvertToDouble(textBoxWear.Text,
-                            labelWear.Text),
-                        FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,
-                            labelFuelConsumption.Text),
-                        Speed = ConvertToDouble(textBoxSpeed.Text,
-                            labelSpeed.Text),
-                        CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,
-                            labelCurrentVolume.Text),
-                        TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),
-                            comboBoxTypeFuel.Text)
+                        Wear = ConvertToDouble(textBoxWear.Text,labelWear.Text),
+                        FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,labelFuelConsumption.Text),
+                        Speed = ConvertToDouble(textBoxSpeed.Text,labelSpeed.Text),
+                        CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,labelCurrentVolume.Text),
+                        TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),comboBoxTypeFuel.Text)
                     };
                 }
                 return new HelicopterTransport
                 {
                     Mark = textBoxMark.Text,
-                    Wear = ConvertToDouble(textBoxWear.Text,
-                        labelWear.Text),
-                    FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,
-                        labelFuelConsumption.Text),
-                    Speed = ConvertToDouble(textBoxSpeed.Text,
-                        labelSpeed.Text),
-                    CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,
-                        labelCurrentVolume.Text),
-                    TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),
-                        comboBoxTypeFuel.Text),
-                    FuelDensity = ConvertToDouble(textBoxFuelDensity.Text,
-                        labelFuelDensity.Text)
+                    Wear = ConvertToDouble(textBoxWear.Text,labelWear.Text),
+                    FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,labelFuelConsumption.Text),
+                    Speed = ConvertToDouble(textBoxSpeed.Text,labelSpeed.Text),
+                    CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,labelCurrentVolume.Text),
+                    TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),comboBoxTypeFuel.Text),
+                    FuelDensity = ConvertToDouble(textBoxFuelDensity.Text,labelFuelDensity.Text)
                 };
             }
             set
@@ -223,7 +212,7 @@ namespace TransportBD
 
         private void textBoxSpeed_MouseLeave(object sender, EventArgs e)
         {
-            if (radioButtonCar.Checked == true)
+            if (radioButtonCar.Checked)
             {
                 errorProvider.SetError(textBoxSpeed,
                     string.IsNullOrEmpty(textBoxSpeed.Text) ? "Значение лежит в диапозоне от 1 до 300 км/ч." : null);
