@@ -26,9 +26,9 @@ namespace TransportBD
         /// <param name="pointFixer"></param>
         private void PointFixer(bool pointFixer)
         {
-            if (pointFixer ==false)
+            if (pointFixer == false)
             {
-                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) +"* - TransportBD";
+                this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + "* - TransportBD";
             }
             else
             {
@@ -51,7 +51,7 @@ namespace TransportBD
                     _filePath = ofd.FileName;
                     _transportList = Serialization.Deserialize(_filePath);
                     iTransportBindingSource.DataSource = _transportList;
-                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - TransportBD";
+                    PointFixer(true);
                     ItemsEnable(true);
                 }
             }
@@ -84,17 +84,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-                var sfd = new SaveFileDialog();
-                sfd.Filter = "Файлы|*.tdb|Все файлы|*.*";
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    _filePath = sfd.FileName;
-                    Serialization.Serialize(_filePath, _transportList);
-                    _messageServices.ShowMessage("Сохранение прошло успешно.");
-                    PointFixer(_pointFixer = true);
-                }
-
+            SaveAss();
         }
 
         /// <summary>
@@ -124,18 +114,17 @@ namespace TransportBD
         /// <param name="e"></param>
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            _filePath = null;
+            iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "Файлы|*.tdb|Все файлы|*.*";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                _filePath = sfd.FileName;
+                Serialization.Serialize(_filePath, _transportList);
+                PointFixer(_pointFixer = true);
+            }
             ItemsEnable(true);
-            if ((_transportList != null) && (_pointFixer != true))
-            {
-                Save();
-                _filePath = null;
-                iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
-            }
-            else
-            {
-                _filePath = null;
-                iTransportBindingSource.DataSource = _transportList = new List<ITransport>();
-            }
         }
 
         /// <summary>
@@ -312,6 +301,22 @@ namespace TransportBD
                     _messageServices.ShowMessage("Сохранение прошло успешно.");
                     PointFixer(_pointFixer = true);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Метод Сохранить как...
+        /// </summary>
+        private void SaveAss()
+        {
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "Файлы|*.tdb|Все файлы|*.*";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                _filePath = sfd.FileName;
+                Serialization.Serialize(_filePath, _transportList);
+                _messageServices.ShowMessage("Сохранение прошло успешно.");
+                PointFixer(_pointFixer = true);
             }
         }
 
