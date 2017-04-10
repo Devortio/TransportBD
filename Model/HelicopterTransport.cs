@@ -10,7 +10,7 @@ namespace Model
     /// Класс Вертолет
     /// </summary>
     [Serializable]
-    public class HelicopterTransport : ITransport 
+    public class HelicopterTransport : TransportBase,ITransport 
     {
         /// <summary>
         /// Марка
@@ -103,59 +103,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Необходимое количество топлива 
-        /// </summary>
-        public double FuelValue
-        {
-            get { return _fuelValue; }
-            set { _fuelValue = value; }
-        }
-
-        /// <summary>
-        /// Марка
-        /// </summary>
-        public string Mark
-        {
-            get { return _mark; }
-            set
-            {
-                if (value.Length == 0)
-                {
-                    throw new ArgumentException(
-                        "Неверно указано название транспортного средства, поле не может быть пустым");
-                }
-                else
-                {
-                    value = value.Trim();
-                    _mark = value.Substring(0, 1).ToUpper() + value.Remove(0, 1);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Износ
-        /// </summary>
-        public double Wear
-        {
-            get { return _wear; }
-            set
-            {
-                if ((value >= 0) && (value <= 100))
-                {
-                    _wear = value;
-                }
-                else
-                {
-                    throw new ArgumentException(
-                        "Не верно указано значение износа транспорта. Значение лежит в диапозоне от 0 до 100 %");
-                }
-            }
-        }
-
-        /// <summary>
         /// Расход топлива
         /// </summary>
-        public double FuelConsumption
+        public override double FuelConsumption
         {
             get { return _fuelConsumption; }
             set
@@ -175,7 +125,7 @@ namespace Model
         /// <summary>
         /// Скорость
         /// </summary>
-        public double Speed
+        public override double Speed
         {
             get { return _speed; }
             set
@@ -195,7 +145,7 @@ namespace Model
         /// <summary>
         /// Объем топливного бака
         /// </summary>
-        public double CurrentVolume
+        public override double CurrentVolume
         {
             get { return _currentVolume; }
             set
@@ -213,36 +163,15 @@ namespace Model
         }
 
         /// <summary>
-        /// Типа топлива
-        /// </summary>
-        public TypeFuel TypeFuel
-        {
-            get { return _typeFuel; }
-            set
-            {
-
-                if (((int) value >= 1) && ((int) value <= 3))
-                {
-                    _typeFuel = (TypeFuel) value;
-                }
-                else
-                {
-                    throw new ArgumentException(
-                        "Не верно указан типа топлива транспорта. Допустимые занчения: Бензин, Дизель, Керосин");
-                }
-            }
-        }
-
-        /// <summary>
         /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик
         /// </summary>
         /// <returns> Метод возвращает true/false</returns>
-        public void IsCanBeOvercomeDistance(double distance)
+        public override void IsCanBeOvercomeDistance(double distance)
         {
             //Коэффициент коррекции расхода топлива на 1 км
             const double k = 0.01;
 
-            var coef = (_typeFuel == Model.TypeFuel.Бензин) ? 0.05 : (_typeFuel == Model.TypeFuel.Газ) ? 0.1 : 0.07;
+            var coef = (_typeFuel == TypeFuel.Бензин) ? 0.05 : (_typeFuel == TypeFuel.Газ) ? 0.1 : 0.07;
 
             _fuelValue = _fuelConsumption*distance +(k*_wear*(_speed*k + _fuelDensity*_fuelConsumption*coef));
 
