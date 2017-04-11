@@ -16,12 +16,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="fuel"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(200, TestName = "Тестирование  при присваивании позитивного значения - '200'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(200, TestName = "Тестирование  при присваивании максимально допустимого значения - '200'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 200' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 200' - 'MinValue'.")]
         public void FuelConsumptionTest(double fuel)
         {
             var helicopterTransport = new HelicopterTransport() { FuelConsumption = fuel };
@@ -32,12 +34,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="speed"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(400, TestName = "Тестирование  при присваивании позитивного значения - '400'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(400, TestName = "Тестирование  при присваивании максимально допустимого значения - '400'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 400' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 400' - 'MinValue'.")]
         public void SpeedTest(double speed)
         {
             var helicopterTransport = new HelicopterTransport() { Speed = speed };
@@ -48,12 +52,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="volume"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(10000, TestName = "Тестирование  при присваивании позитивного значения - '10000'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(10000, TestName = "Тестирование  при присваивании максимально допустимого значения - '10000'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 10000' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 10000' - 'MinValue'.")]
         public void CurrentVolumeTest(double volume)
         {
             var helicopterTransport = new HelicopterTransport() { CurrentVolume = volume };
@@ -64,12 +70,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="fuelDensity"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(10, TestName = "Тестирование  при присваивании позитивного значения - '10'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(10, TestName = "Тестирование  при присваивании максимально допустимого значения - '10'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 10' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 10' - 'MinValue'.")]
         public void FuelDensityTest(double fuelDensity)
         {
             var helicopterTransport = new HelicopterTransport() { FuelDensity = fuelDensity};

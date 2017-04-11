@@ -16,12 +16,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="fuel"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(40, TestName = "Тестирование  при присваивании позитивного значения - '40'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(40, TestName = "Тестирование  при присваивании максимально допустимого значения  - '40'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 40' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 40' - 'MinValue'.")]
         public void FuelConsumptionTest(double fuel)
         {
             var carTransport = new CarTransport() {FuelConsumption = fuel};
@@ -32,12 +34,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="speed"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(300, TestName = "Тестирование  при присваивании позитивного значения - '300'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(300, TestName = "Тестирование  при присваивании максимально допустимого значения - '300'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 300' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 300' - 'MinValue'.")]
         public void SpeedTest(double speed)
         {
             var carTransport = new CarTransport() { Speed = speed};
@@ -48,12 +52,14 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="volume"></param>
         [Test]
-        [TestCase(0, TestName = "Тестирование  при присваивании позитивного значения - '0'.")]
-        [TestCase(1000, TestName = "Тестирование  при присваивании позитивного значения - '1000'.")]
+        [TestCase(0, TestName = "Тестирование  при присваивании минимально допустимого значения - '0'.")]
+        [TestCase(1000, TestName = "Тестирование  при присваивании максимально допустимого значения - '1000'.")]
         [TestCase(double.MaxValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MaxValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 1000' - 'MaxValue'.")]
         [TestCase(double.MinValue, ExpectedException = typeof(ArgumentException),
-            TestName = "Тестирование  при присваивании негативного значения - 'MinValue'.")]
+            TestName = "Тестирование  при присваивании недопустимого значения " +
+                       "лежащего за пределами допустимого диапозона '0 - 1000' - 'MinValue'.")]
         public void CurrentVolumeTest(double volume)
         {
             var carTransport = new CarTransport() { CurrentVolume = volume};
