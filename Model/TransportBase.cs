@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    [Serializable]
     public abstract class TransportBase: ITransport
     {
         /// <summary>
@@ -86,7 +87,7 @@ namespace Model
                 }
                 else
                 {
-                    throw new FormatException(
+                    throw new ArgumentException(
                         "Не верно указано значение износа транспорта. Значение лежит в диапозоне от 0 до 100 %.");
                 }
             }

@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportDB\CarTransportTest.cs" />
+    <Compile Include="TransportDB\HelicopterTransportTest.cs" />
+    <Compile Include="TransportDB\TransportBaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
