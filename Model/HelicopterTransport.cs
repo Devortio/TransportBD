@@ -163,29 +163,33 @@ namespace Model
         }
 
         /// <summary>
+        /// Коэффициент расхода топлива 
+        /// </summary>
+        private Dictionary<FuelType, double> FuelWasteCoefs = new Dictionary<FuelType, double>
+        {
+            {FuelType.Бензин, 0.05},
+            {FuelType.Дизель, 0.06},
+            {FuelType.Газ, 0.08}
+        };
+
+        /// <summary>
         /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик
         /// </summary>
         /// <returns> Метод возвращает true/false</returns>
-        public override void IsCanBeOvercomeDistance(double distance)
+        public override bool IsCanBeOvercomeDistance(double distance)
         {
             //Коэффициент коррекции расхода топлива на 1 км
             const double k = 0.01;
+            var wear = Wear;
 
-            var coef = (_fuelType == FuelType.Бензин) ? 0.05 : (_fuelType == FuelType.Газ) ? 0.1 : 0.07;
+            var coef = FuelWasteCoefs[FuelType];
 
-            _fuelValue = _fuelConsumption*distance +(k*_wear*(_speed*k + _fuelDensity*_fuelConsumption*coef));
+            var fuelValue = _fuelConsumption * distance +
+                         (k * wear * (_speed * k + _fuelDensity * _fuelConsumption * coef));
 
-            _wear = _wear + distance*0.02;
+            wear = wear + distance * 0.02;
 
-            if ((_fuelValue <= _currentVolume) && (_wear < 100))
-            {
-                FuelValue = _fuelValue;
-                Wear = _wear;
-            }
-            else
-            {
-                FuelValue = 0;
-            }
+            return ((fuelValue <= _currentVolume) && (wear < 100));
         }
     }
 }

@@ -126,6 +126,6 @@ namespace Model
         /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик
         /// </summary>
         /// <returns> Метод возвращает true/false. </returns>
-        public abstract void IsCanBeOvercomeDistance(double distance);
+        public abstract bool IsCanBeOvercomeDistance(double distance);
     }
 }

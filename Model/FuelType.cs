@@ -8,7 +8,7 @@ namespace Model
 {
     public enum FuelType 
     {
-        Бензин=1,
+        Бензин,
         Дизель,
         Газ
     };
