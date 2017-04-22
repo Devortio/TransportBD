@@ -40,7 +40,7 @@ namespace Model
         /// <summary>
         /// Тип топлива
         /// </summary>
-        private TypeFuel _typeFuel;
+        private FuelType _fuelType;
 
         /// <summary>
         /// Плотность топлива
@@ -62,11 +62,11 @@ namespace Model
         /// <param name="speed"> Скорость </param>
         /// <param name="currentvolume"> Объем топливного бака </param>
         /// <param name="fueldensity"> Плотность топлива </param>
-        public HelicopterTransport(string mark, TypeFuel typefuel, double wear, double fuelconsumption, double speed,
+        public HelicopterTransport(string mark, FuelType fuelType, double wear, double fuelconsumption, double speed,
             double currentvolume, double fueldensity)
         {
             Mark = mark;
-            TypeFuel = typefuel;
+            FuelType = fuelType;
             Wear = wear;
             FuelConsumption = fuelconsumption;
             Speed = speed;
@@ -171,7 +171,7 @@ namespace Model
             //Коэффициент коррекции расхода топлива на 1 км
             const double k = 0.01;
 
-            var coef = (_typeFuel == TypeFuel.Бензин) ? 0.05 : (_typeFuel == TypeFuel.Газ) ? 0.1 : 0.07;
+            var coef = (_fuelType == FuelType.Бензин) ? 0.05 : (_fuelType == FuelType.Газ) ? 0.1 : 0.07;
 
             _fuelValue = _fuelConsumption*distance +(k*_wear*(_speed*k + _fuelDensity*_fuelConsumption*coef));
 

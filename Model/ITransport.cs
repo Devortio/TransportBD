@@ -19,7 +19,7 @@ namespace Model
         /// Типа топлива транспортного средства
         /// </summary>
         /// <returns> Данные о типе топлива транспортного средства </returns>
-        TypeFuel TypeFuel { get; set; }
+        FuelType FuelType { get; set; }
         
         /// <summary>
         /// Износ транспортного средства

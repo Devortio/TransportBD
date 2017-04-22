@@ -257,7 +257,7 @@ namespace TransportBD
                         case "Тип топлива":
                         {
                             iTransportBindingSource.DataSource = _transportList.FindAll(
-                                transport => transport.TypeFuel.ToString() == searchLine);
+                                transport => transport.FuelType.ToString() == searchLine);
                             break;
                         }
                         case "Расход топлива":

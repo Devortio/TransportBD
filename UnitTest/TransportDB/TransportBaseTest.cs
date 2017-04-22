@@ -51,17 +51,17 @@ namespace UnitTest.TransportDB
         /// </summary>
         /// <param name="typeFuel"></param>
         [Test]
-        [TestCase(TypeFuel.Бензин, TestName = "Тестирование  при присваивании допустимого значения - 'Бензин'.")]
-        [TestCase(TypeFuel.Дизель, TestName = "Тестирование  при присваивании допустимого значения - 'Дизель'.")]
+        [TestCase(FuelType.Бензин, TestName = "Тестирование  при присваивании допустимого значения - 'Бензин'.")]
+        [TestCase(FuelType.Дизель, TestName = "Тестирование  при присваивании допустимого значения - 'Дизель'.")]
         [TestCase("Кислород", ExpectedException = typeof(ArgumentException),
             TestName = "Тестирование  при присваивании недопустимого значения " +
                        "не входящего в перечисление - 'Кислород'.")]
         [TestCase("Пропан", ExpectedException = typeof(ArgumentException),
             TestName = "Тестирование  при присваивании недопустимого значения " +
                        "не входящего в перечисление - 'Пропан'.")]
-        public void TypeFuelTest(TypeFuel typeFuel)
+        public void TypeFuelTest(FuelType fuelType)
         {
-            var carTransport = new CarTransport() { TypeFuel = typeFuel};
+            var carTransport = new CarTransport() { FuelType = fuelType};
         }
     }
 }

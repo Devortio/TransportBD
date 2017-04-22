@@ -31,7 +31,7 @@ namespace TransportBD
                         FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,labelFuelConsumption.Text),
                         Speed = ConvertToDouble(textBoxSpeed.Text,labelSpeed.Text),
                         CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,labelCurrentVolume.Text),
-                        TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),comboBoxTypeFuel.Text)
+                        FuelType = (FuelType) Enum.Parse(typeof(FuelType),comboBoxTypeFuel.Text)
                     };
                 }
                 return new HelicopterTransport
@@ -41,7 +41,7 @@ namespace TransportBD
                     FuelConsumption = ConvertToDouble(textBoxFuelConsumption.Text,labelFuelConsumption.Text),
                     Speed = ConvertToDouble(textBoxSpeed.Text,labelSpeed.Text),
                     CurrentVolume = ConvertToDouble(textBoxCurrentVolume.Text,labelCurrentVolume.Text),
-                    TypeFuel = (TypeFuel) Enum.Parse(typeof(TypeFuel),comboBoxTypeFuel.Text),
+                    FuelType = (FuelType) Enum.Parse(typeof(FuelType),comboBoxTypeFuel.Text),
                     FuelDensity = ConvertToDouble(textBoxFuelDensity.Text,labelFuelDensity.Text)
                 };
             }
@@ -54,7 +54,7 @@ namespace TransportBD
                     textBoxFuelConsumption.Text = Convert.ToString(value.FuelConsumption);
                     textBoxWear.Text = Convert.ToString(value.Wear);
                     textBoxSpeed.Text = Convert.ToString(value.Speed);
-                    comboBoxTypeFuel.Text = Convert.ToString(value.TypeFuel);
+                    comboBoxTypeFuel.Text = Convert.ToString(value.FuelType);
                     textBoxSpeed.Text = Convert.ToString(value.Speed);
                     radioButtonCar.Checked = true;
                 }
@@ -67,7 +67,7 @@ namespace TransportBD
                     textBoxWear.Text = Convert.ToString(transport.Wear);
                     textBoxSpeed.Text = Convert.ToString(transport.Speed);
                     textBoxFuelDensity.Text = Convert.ToString(transport.FuelDensity);
-                    comboBoxTypeFuel.Text = Convert.ToString(transport.TypeFuel);
+                    comboBoxTypeFuel.Text = Convert.ToString(transport.FuelType);
                     radioButtonHelicopter.Checked = true;
                 }
             }

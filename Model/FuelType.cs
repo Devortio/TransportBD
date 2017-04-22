@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum TypeFuel 
+    public enum FuelType 
     {
         Бензин=1,
         Дизель,

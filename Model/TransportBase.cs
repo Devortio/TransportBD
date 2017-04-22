@@ -37,7 +37,7 @@ namespace Model
         /// <summary>
         /// Тип топлива
         /// </summary>
-        private TypeFuel _typeFuel;
+        private FuelType _fuelType;
 
         /// <summary>
         /// Необходимое количество топлива
@@ -111,22 +111,10 @@ namespace Model
         /// <summary>
         /// Типа топлива
         /// </summary>
-        public TypeFuel TypeFuel
+        public FuelType FuelType
         {
-            get { return _typeFuel; }
-            set
-            {
-
-                if (((int)value >= 1) && ((int)value <= 3))
-                {
-                    _typeFuel = value;
-                }
-                else
-                {
-                    throw new ArgumentException(
-                            "Не верно указан типа топлива транспорта. Допустимые занчения: Бензин, Дизель, Керосин.");
-                }
-            }
+            get { return _fuelType; }
+            set { _fuelType = value; }
         }
 
         /// <summary>

@@ -40,7 +40,7 @@ namespace Model
         /// <summary>
         /// Тип топлива
         /// </summary>
-        private TypeFuel _typeFuel;
+        private FuelType _fuelType;
 
         /// <summary>
         /// Необходимое количество топлива
@@ -51,15 +51,15 @@ namespace Model
         /// Конструктор класса CarTransport
         /// </summary>
         /// <param name="mark"> Марка </param>
-        /// <param name="typefuel"> Тип топлива </param>
+        /// <param name="fuelType"> Тип топлива </param>
         /// <param name="wear"> Процент износа </param>
         /// <param name="fuelconsumption"> Расход топлива </param>
         /// <param name="speed"> Скорость </param>
         /// <param name="currentvolume"> Объем топливного бака </param>
-        public CarTransport(string mark, TypeFuel typefuel, double wear, double fuelconsumption, double speed, double currentvolume)
+        public CarTransport(string mark, FuelType fuelType, double wear, double fuelconsumption, double speed, double currentvolume)
         {
             Mark = mark;
-            TypeFuel = typefuel;
+            FuelType = fuelType;
             Wear = wear;
             FuelConsumption = fuelconsumption;
             Speed = speed;
@@ -142,7 +142,7 @@ namespace Model
         {
             //Коэффициент коррекции расхода топлива на 1 км
             const double k = 0.01;
-            var coef = (_typeFuel == TypeFuel.Бензин) ? 0.05 : (_typeFuel == TypeFuel.Газ) ? 0.1 : 0.07;
+            var coef = (_fuelType== FuelType.Бензин) ? 0.05 : (_fuelType == FuelType.Газ) ? 0.1 : 0.07;
             _fuelValue = k * _fuelConsumption * distance * (1 + k * _wear * (_speed * coef));
             _wear = _wear + distance * 0.002 + _speed * 0.06;
 
