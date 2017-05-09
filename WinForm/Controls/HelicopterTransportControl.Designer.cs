@@ -71,6 +71,7 @@
             this.textBoxCurrentVolume.Name = "textBoxCurrentVolume";
             this.textBoxCurrentVolume.Size = new System.Drawing.Size(100, 20);
             this.textBoxCurrentVolume.TabIndex = 66;
+            this.textBoxCurrentVolume.MouseLeave += new System.EventHandler(this.textBoxCurrentVolume_MouseLeave);
             // 
             // textBoxSpeed
             // 
@@ -78,6 +79,7 @@
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.Size = new System.Drawing.Size(100, 20);
             this.textBoxSpeed.TabIndex = 65;
+            this.textBoxSpeed.MouseLeave += new System.EventHandler(this.textBoxSpeed_MouseLeave);
             // 
             // labelSpeed
             // 
@@ -118,6 +120,7 @@
             this.comboBoxFuelType.Name = "comboBoxFuelType";
             this.comboBoxFuelType.Size = new System.Drawing.Size(100, 21);
             this.comboBoxFuelType.TabIndex = 61;
+            this.comboBoxFuelType.MouseLeave += new System.EventHandler(this.comboBoxFuelType_MouseLeave);
             // 
             // labelMark
             // 
@@ -133,6 +136,7 @@
             this.textBoxFuelConsumption.Name = "textBoxFuelConsumption";
             this.textBoxFuelConsumption.Size = new System.Drawing.Size(100, 20);
             this.textBoxFuelConsumption.TabIndex = 59;
+            this.textBoxFuelConsumption.MouseLeave += new System.EventHandler(this.textBoxFuelConsumption_MouseLeave);
             // 
             // textBoxWear
             // 
@@ -140,6 +144,7 @@
             this.textBoxWear.Name = "textBoxWear";
             this.textBoxWear.Size = new System.Drawing.Size(100, 20);
             this.textBoxWear.TabIndex = 58;
+            this.textBoxWear.MouseLeave += new System.EventHandler(this.textBoxWear_MouseLeave);
             // 
             // textBoxMark
             // 
@@ -147,6 +152,7 @@
             this.textBoxMark.Name = "textBoxMark";
             this.textBoxMark.Size = new System.Drawing.Size(100, 20);
             this.textBoxMark.TabIndex = 57;
+            this.textBoxMark.MouseLeave += new System.EventHandler(this.textBoxMark_MouseLeave);
             // 
             // labelFuelDensity
             // 
@@ -163,6 +169,7 @@
             this.textBoxFuelDensity.Name = "textBoxFuelDensity";
             this.textBoxFuelDensity.Size = new System.Drawing.Size(100, 20);
             this.textBoxFuelDensity.TabIndex = 69;
+            this.textBoxFuelDensity.MouseLeave += new System.EventHandler(this.textBoxFuelDensity_MouseLeave);
             // 
             // errorProvider
             // 

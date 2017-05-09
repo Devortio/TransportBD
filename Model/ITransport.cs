@@ -46,12 +46,6 @@ namespace Model
         double CurrentVolume { get; set; }
 
         /// <summary>
-        /// Количество топлива необходимого на проезд пути
-        /// </summary>
-        /// <returns> Значение количества топлива необходимого на проезд некоторого пути </returns>
-        double FuelValue { get; }
-
-        /// <summary>
         /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик
         /// </summary>
         /// <returns> Метод возвращает true/false </returns>

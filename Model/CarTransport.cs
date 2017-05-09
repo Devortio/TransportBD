@@ -12,15 +12,6 @@ namespace Model
     [Serializable]
     public class CarTransport : TransportBase,ITransport
     {
-        /// <summary>
-        /// Марка
-        /// </summary>
-        private string _mark;
-
-        /// <summary>
-        /// Процент износа
-        /// </summary>
-        private double _wear;
 
         /// <summary>
         /// Расход топлива
@@ -36,16 +27,6 @@ namespace Model
         /// Объем топливного бака
         /// </summary>
         private double _currentVolume;
-
-        /// <summary>
-        /// Тип топлива
-        /// </summary>
-        private FuelType _fuelType;
-
-        /// <summary>
-        /// Необходимое количество топлива
-        /// </summary>
-        private double _fuelValue;
 
         /// <summary>
         /// Конструктор класса CarTransport

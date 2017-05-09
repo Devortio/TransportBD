@@ -12,15 +12,6 @@ namespace Model
     [Serializable]
     public class HelicopterTransport : TransportBase,ITransport 
     {
-        /// <summary>
-        /// Марка
-        /// </summary>
-        private string _mark;
-
-        /// <summary>
-        /// Процент износ
-        /// </summary>
-        private double _wear;
 
         /// <summary>
         /// Расход топлива
@@ -38,19 +29,9 @@ namespace Model
         private double _currentVolume;
 
         /// <summary>
-        /// Тип топлива
-        /// </summary>
-        private FuelType _fuelType;
-
-        /// <summary>
         /// Плотность топлива
         /// </summary>
         private double _fuelDensity;
-
-        /// <summary>
-        /// Необходимое количество топлива
-        /// </summary>
-        private double _fuelValue;
 
         /// <summary>
         /// Конструктор класса HelicopterTransport
