@@ -18,6 +18,7 @@ namespace TransportBD
             InitializeComponent();
             _pointFixer = true;
             ItemsEnable(false);
+            comboBoxSearchFuelType.Visible = false;
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ofd = new OpenFileDialog {Filter = "Файлы|*.tdb|Все файлы|*.*"};
+            var ofd = new OpenFileDialog { Filter = "Файлы|*.tdb|Все файлы|*.*" };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 if (ofd.FileName != null)
@@ -64,7 +65,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Save();
+            Save();
         }
 
         /// <summary>
@@ -144,8 +145,8 @@ namespace TransportBD
         /// <param name="e"></param>
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var af=new AboutForm();
-            af.ShowDialog();
+            var aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
 
         /// <summary>
@@ -155,8 +156,8 @@ namespace TransportBD
         /// <param name="e"></param>
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var hf = new HelpForm();
-            hf.ShowDialog();
+            var helpForm = new HelpForm();
+            helpForm.ShowDialog();
         }
 
         /// <summary>
@@ -169,7 +170,7 @@ namespace TransportBD
 
             if (_pointFixer != true)
             {
-                DialogResult dialogResult = MessageBox.Show( 
+                DialogResult dialogResult = MessageBox.Show(
                     "Сохранить изменения ?", "Предупреждение",
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Exclamation);
@@ -223,7 +224,7 @@ namespace TransportBD
         /// <param name="e"></param>
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            if (_transportList!= null)
+            if (_transportList != null)
             {
                 if (comboBoxSearch.SelectedIndex != -1)
                 {
@@ -231,41 +232,41 @@ namespace TransportBD
                     switch (comboBoxSearch.SelectedItem.ToString())
                     {
                         case "Марка":
-                        {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                            {
+                                iTransportBindingSource.DataSource = _transportList.FindAll(
                                 transport => transport.Mark == searchLine);
-                            break;
-                        }
+                                break;
+                            }
                         case "Скорость":
-                        {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                            {
+                                iTransportBindingSource.DataSource = _transportList.FindAll(
                                 transport => transport.Speed.ToString() == searchLine);
-                            break;
-                        }
+                                break;
+                            }
                         case "Степень износа":
-                        {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                            {
+                                iTransportBindingSource.DataSource = _transportList.FindAll(
                                 transport => transport.Wear.ToString() == searchLine);
-                            break;
-                        }
+                                break;
+                            }
                         case "Объем бака":
-                        {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                            {
+                                iTransportBindingSource.DataSource = _transportList.FindAll(
                                 transport => transport.CurrentVolume.ToString() == searchLine);
-                            break;
-                        }
+                                break;
+                            }
                         case "Тип топлива":
-                        {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(
-                                transport => transport.FuelType.ToString() == searchLine);
-                            break;
-                        }
+                            {
+                                iTransportBindingSource.DataSource = _transportList.FindAll(
+                                transport => transport.FuelType.ToString() == comboBoxSearchFuelType.SelectedText);
+                                break;
+                            }
                         case "Расход топлива":
-                        {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(
+                            {
+                                iTransportBindingSource.DataSource = _transportList.FindAll(
                                 transport => transport.FuelConsumption.ToString() == searchLine);
-                            break;
-                        }
+                                break;
+                            }
                     }
                 }
                 else
@@ -329,12 +330,14 @@ namespace TransportBD
             {
                 var cof = new CreateObjectForm();
                 var index = iTransportBindingSource.IndexOf(iTransportBindingSource.Current);
-                //cof.Transport = (ITransport)iTransportBindingSource.Current;
-                iTransportBindingSource.RemoveAt(index);
-                cof.ShowDialog();
-                //var transport = cof.Transport;
-               // iTransportBindingSource.Insert(index, transport);
-                PointFixer(_pointFixer = false);
+                cof.Transport = (ITransport)iTransportBindingSource.Current;
+
+                if (cof.ShowDialog() == DialogResult.OK)
+                {
+                    iTransportBindingSource.RemoveAt(index);
+                    PointFixer(_pointFixer = false);
+                    iTransportBindingSource.Add(cof.Transport);
+                }
             }
             else
             {
@@ -351,8 +354,7 @@ namespace TransportBD
             if (cof.ShowDialog() == DialogResult.OK)
             {
                 PointFixer(_pointFixer = false);
-                //var transport = cof.Transport;
-               // iTransportBindingSource.Add(transport);
+                iTransportBindingSource.Add(cof.Transport);
             }
         }
 
@@ -385,6 +387,10 @@ namespace TransportBD
             buttonSearch.Enabled = itemsEnable;
             comboBoxSearch.Enabled = itemsEnable;
             textBoxSearch.Enabled = itemsEnable;
+            textBoxDistance.Enabled = itemsEnable;
+            label2.Enabled = itemsEnable;
+            label4.Enabled = itemsEnable;
+            transportControl.Enabled = itemsEnable;
         }
 
         /// <summary>
@@ -405,6 +411,26 @@ namespace TransportBD
         private void buttonReset_Click(object sender, EventArgs e)
         {
             iTransportBindingSource.DataSource = _transportList;
+        }
+
+        /// <summary>
+        /// Дополнительная информация
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridContent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            transportControl.ReadOnly = true;
+            transportControl.Transport = (ITransport)iTransportBindingSource.Current;
+        }
+
+        private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSearch.SelectedText == "Тип топлива")
+            {
+                comboBoxSearchFuelType.Visible = true;
+            }
+            comboBoxSearchFuelType.Visible = false;
         }
     }
 }

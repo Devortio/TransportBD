@@ -32,6 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewForm));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridContent = new System.Windows.Forms.DataGridView();
+            this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iTransportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,14 +63,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
             this.transportBaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transportControl1 = new TransportBD.Controls.TransportControl();
+            this.transportControl = new TransportBD.Controls.TransportControl();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxSearchFuelType = new System.Windows.Forms.ComboBox();
+            this.textBoxDistance = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -102,6 +106,48 @@
             this.dataGridContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridContent.Size = new System.Drawing.Size(604, 324);
             this.dataGridContent.TabIndex = 7;
+            // 
+            // markDataGridViewTextBoxColumn
+            // 
+            this.markDataGridViewTextBoxColumn.DataPropertyName = "Mark";
+            this.markDataGridViewTextBoxColumn.HeaderText = "Марка";
+            this.markDataGridViewTextBoxColumn.Name = "markDataGridViewTextBoxColumn";
+            this.markDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wearDataGridViewTextBoxColumn
+            // 
+            this.wearDataGridViewTextBoxColumn.DataPropertyName = "Wear";
+            this.wearDataGridViewTextBoxColumn.HeaderText = "Степень износа";
+            this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
+            this.wearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speedDataGridViewTextBoxColumn
+            // 
+            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
+            this.speedDataGridViewTextBoxColumn.HeaderText = "Скорость";
+            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
+            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currentVolumeDataGridViewTextBoxColumn
+            // 
+            this.currentVolumeDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolume";
+            this.currentVolumeDataGridViewTextBoxColumn.HeaderText = "Объем бака";
+            this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
+            this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fuelConsumptionDataGridViewTextBoxColumn
+            // 
+            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
+            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
+            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
+            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // FuelType
+            // 
+            this.FuelType.DataPropertyName = "FuelType";
+            this.FuelType.HeaderText = "Тип топлива";
+            this.FuelType.Name = "FuelType";
+            this.FuelType.ReadOnly = true;
             // 
             // iTransportBindingSource
             // 
@@ -322,54 +368,12 @@
             // 
             this.transportBaseBindingSource.DataSource = typeof(Model.TransportBase);
             // 
-            // markDataGridViewTextBoxColumn
+            // transportControl
             // 
-            this.markDataGridViewTextBoxColumn.DataPropertyName = "Mark";
-            this.markDataGridViewTextBoxColumn.HeaderText = "Марка";
-            this.markDataGridViewTextBoxColumn.Name = "markDataGridViewTextBoxColumn";
-            this.markDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // wearDataGridViewTextBoxColumn
-            // 
-            this.wearDataGridViewTextBoxColumn.DataPropertyName = "Wear";
-            this.wearDataGridViewTextBoxColumn.HeaderText = "Степень износа";
-            this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
-            this.wearDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speedDataGridViewTextBoxColumn
-            // 
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Скорость";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currentVolumeDataGridViewTextBoxColumn
-            // 
-            this.currentVolumeDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolume";
-            this.currentVolumeDataGridViewTextBoxColumn.HeaderText = "Объем бака";
-            this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
-            this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fuelConsumptionDataGridViewTextBoxColumn
-            // 
-            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
-            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
-            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
-            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // FuelType
-            // 
-            this.FuelType.DataPropertyName = "FuelType";
-            this.FuelType.HeaderText = "Тип топлива";
-            this.FuelType.Name = "FuelType";
-            this.FuelType.ReadOnly = true;
-            // 
-            // transportControl1
-            // 
-            this.transportControl1.Location = new System.Drawing.Point(622, 52);
-            this.transportControl1.Name = "transportControl1";
-            this.transportControl1.Size = new System.Drawing.Size(277, 227);
-            this.transportControl1.TabIndex = 23;
+            this.transportControl.Location = new System.Drawing.Point(622, 52);
+            this.transportControl.Name = "transportControl";
+            this.transportControl.Size = new System.Drawing.Size(277, 227);
+            this.transportControl.TabIndex = 23;
             // 
             // label3
             // 
@@ -381,13 +385,61 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Доп. информация";
             // 
+            // comboBoxSearchFuelType
+            // 
+            this.comboBoxSearchFuelType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSearchFuelType.FormattingEnabled = true;
+            this.comboBoxSearchFuelType.Items.AddRange(new object[] {
+            "Марка",
+            "Степень износа",
+            "Объем бака",
+            "Скорость",
+            "Тип топлива",
+            "Расход топлива"});
+            this.comboBoxSearchFuelType.Location = new System.Drawing.Point(749, 387);
+            this.comboBoxSearchFuelType.Name = "comboBoxSearchFuelType";
+            this.comboBoxSearchFuelType.Size = new System.Drawing.Size(131, 21);
+            this.comboBoxSearchFuelType.TabIndex = 25;
+            // 
+            // textBoxDistance
+            // 
+            this.textBoxDistance.Location = new System.Drawing.Point(699, 285);
+            this.textBoxDistance.Name = "textBoxDistance";
+            this.textBoxDistance.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDistance.TabIndex = 26;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(619, 286);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 15);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Дистанция:";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(805, 283);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Проверка";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 417);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxDistance);
+            this.Controls.Add(this.comboBoxSearchFuelType);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.transportControl1);
+            this.Controls.Add(this.transportControl);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxSearch);
@@ -451,8 +503,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fuelConsumptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FuelType;
         private System.Windows.Forms.BindingSource transportBaseBindingSource;
-        private Controls.TransportControl transportControl1;
+        private Controls.TransportControl transportControl;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxSearchFuelType;
+        private System.Windows.Forms.TextBox textBoxDistance;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 
