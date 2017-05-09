@@ -329,11 +329,11 @@ namespace TransportBD
             {
                 var cof = new CreateObjectForm();
                 var index = iTransportBindingSource.IndexOf(iTransportBindingSource.Current);
-                cof.Transport = (ITransport)iTransportBindingSource.Current;
+                //cof.Transport = (ITransport)iTransportBindingSource.Current;
                 iTransportBindingSource.RemoveAt(index);
                 cof.ShowDialog();
-                var transport = cof.Transport;
-                iTransportBindingSource.Insert(index, transport);
+                //var transport = cof.Transport;
+               // iTransportBindingSource.Insert(index, transport);
                 PointFixer(_pointFixer = false);
             }
             else
@@ -351,8 +351,8 @@ namespace TransportBD
             if (cof.ShowDialog() == DialogResult.OK)
             {
                 PointFixer(_pointFixer = false);
-                var transport = cof.Transport;
-                iTransportBindingSource.Add(transport);
+                //var transport = cof.Transport;
+               // iTransportBindingSource.Add(transport);
             }
         }
 

@@ -40,11 +40,6 @@ namespace Model
         private FuelType _fuelType;
 
         /// <summary>
-        /// Необходимое количество топлива
-        /// </summary>
-        private double _fuelValue;
-
-        /// <summary>
         /// Марка
         /// </summary>
         public string Mark
@@ -116,11 +111,6 @@ namespace Model
             get { return _fuelType; }
             set { _fuelType = value; }
         }
-
-        /// <summary>
-        /// Затрачиваемое колиество топлива
-        /// </summary>
-        public double FuelValue { get; set; }
 
         /// <summary>
         /// Метод определяет,сможет транспортное средство проехать заданный путь, в зависимости от его характеристик

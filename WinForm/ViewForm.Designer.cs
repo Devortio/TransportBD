@@ -56,16 +56,19 @@
             this.comboBoxSearch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
-            this.fuelValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transportBaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transportControl1 = new TransportBD.Controls.TransportControl();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transportBaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,26 +83,24 @@
             // 
             // dataGridContent
             // 
-            this.dataGridContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridContent.AutoGenerateColumns = false;
             this.dataGridContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fuelValueDataGridViewTextBoxColumn,
-            this.FuelType,
             this.markDataGridViewTextBoxColumn,
             this.wearDataGridViewTextBoxColumn,
-            this.fuelConsumptionDataGridViewTextBoxColumn,
             this.speedDataGridViewTextBoxColumn,
-            this.currentVolumeDataGridViewTextBoxColumn});
+            this.currentVolumeDataGridViewTextBoxColumn,
+            this.fuelConsumptionDataGridViewTextBoxColumn,
+            this.FuelType});
             this.dataGridContent.DataSource = this.iTransportBindingSource;
             this.dataGridContent.Location = new System.Drawing.Point(12, 52);
             this.dataGridContent.Name = "dataGridContent";
             this.dataGridContent.ReadOnly = true;
             this.dataGridContent.RowHeadersVisible = false;
             this.dataGridContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridContent.Size = new System.Drawing.Size(705, 181);
+            this.dataGridContent.Size = new System.Drawing.Size(604, 324);
             this.dataGridContent.TabIndex = 7;
             // 
             // iTransportBindingSource
@@ -116,7 +117,7 @@
             this.AboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(729, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(973, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -230,7 +231,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAdd.Location = new System.Drawing.Point(12, 241);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 384);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 15;
@@ -241,7 +242,7 @@
             // buttonChange
             // 
             this.buttonChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonChange.Location = new System.Drawing.Point(93, 241);
+            this.buttonChange.Location = new System.Drawing.Point(93, 384);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(75, 23);
             this.buttonChange.TabIndex = 16;
@@ -252,7 +253,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDelete.Location = new System.Drawing.Point(174, 241);
+            this.buttonDelete.Location = new System.Drawing.Point(174, 384);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 17;
@@ -263,7 +264,7 @@
             // buttonSearch
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearch.Location = new System.Drawing.Point(642, 241);
+            this.buttonSearch.Location = new System.Drawing.Point(886, 384);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 18;
@@ -274,7 +275,7 @@
             // textBoxSearch
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearch.Location = new System.Drawing.Point(505, 243);
+            this.textBoxSearch.Location = new System.Drawing.Point(749, 386);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(131, 20);
             this.textBoxSearch.TabIndex = 19;
@@ -290,7 +291,7 @@
             "Скорость",
             "Тип топлива",
             "Расход топлива"});
-            this.comboBoxSearch.Location = new System.Drawing.Point(378, 243);
+            this.comboBoxSearch.Location = new System.Drawing.Point(622, 386);
             this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSearch.TabIndex = 20;
@@ -300,7 +301,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(289, 244);
+            this.label2.Location = new System.Drawing.Point(533, 387);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 15);
             this.label2.TabIndex = 21;
@@ -309,7 +310,7 @@
             // buttonReset
             // 
             this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonReset.Location = new System.Drawing.Point(642, 27);
+            this.buttonReset.Location = new System.Drawing.Point(886, 353);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 22;
@@ -317,19 +318,9 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // fuelValueDataGridViewTextBoxColumn
+            // transportBaseBindingSource
             // 
-            this.fuelValueDataGridViewTextBoxColumn.DataPropertyName = "FuelValue";
-            this.fuelValueDataGridViewTextBoxColumn.HeaderText = "Затрачиваемое топливо";
-            this.fuelValueDataGridViewTextBoxColumn.Name = "fuelValueDataGridViewTextBoxColumn";
-            this.fuelValueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // FuelType
-            // 
-            this.FuelType.DataPropertyName = "FuelType";
-            this.FuelType.HeaderText = "Тип топлива";
-            this.FuelType.Name = "FuelType";
-            this.FuelType.ReadOnly = true;
+            this.transportBaseBindingSource.DataSource = typeof(Model.TransportBase);
             // 
             // markDataGridViewTextBoxColumn
             // 
@@ -345,13 +336,6 @@
             this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
             this.wearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // fuelConsumptionDataGridViewTextBoxColumn
-            // 
-            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
-            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
-            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
-            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // speedDataGridViewTextBoxColumn
             // 
             this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
@@ -366,11 +350,44 @@
             this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
             this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // fuelConsumptionDataGridViewTextBoxColumn
+            // 
+            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
+            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
+            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
+            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // FuelType
+            // 
+            this.FuelType.DataPropertyName = "FuelType";
+            this.FuelType.HeaderText = "Тип топлива";
+            this.FuelType.Name = "FuelType";
+            this.FuelType.ReadOnly = true;
+            // 
+            // transportControl1
+            // 
+            this.transportControl1.Location = new System.Drawing.Point(622, 52);
+            this.transportControl1.Name = "transportControl1";
+            this.transportControl1.Size = new System.Drawing.Size(277, 227);
+            this.transportControl1.TabIndex = 23;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(619, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 15);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Доп. информация";
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 274);
+            this.ClientSize = new System.Drawing.Size(973, 417);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.transportControl1);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxSearch);
@@ -391,6 +408,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transportBaseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,12 +444,15 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn fuelValueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FuelType;
         private System.Windows.Forms.DataGridViewTextBoxColumn markDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wearDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fuelConsumptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn speedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentVolumeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fuelConsumptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FuelType;
+        private System.Windows.Forms.BindingSource transportBaseBindingSource;
+        private Controls.TransportControl transportControl1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

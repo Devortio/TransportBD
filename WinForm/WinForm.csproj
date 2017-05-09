@@ -144,6 +144,7 @@
     <None Include="Properties\DataSources\Model.HelicopterTransport.datasource" />
     <None Include="Properties\DataSources\Model.IFileManeger.datasource" />
     <None Include="Properties\DataSources\Model.ITransport.datasource" />
+    <None Include="Properties\DataSources\Model.TransportBase.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

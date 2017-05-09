@@ -58,7 +58,7 @@
             // 
             // carTransportControl
             // 
-            this.carTransportControl.CarTransport = null;
+            //this.carTransportControl.CarTransport = null;
             this.carTransportControl.Location = new System.Drawing.Point(0, 26);
             this.carTransportControl.Name = "carTransportControl";
             this.carTransportControl.Size = new System.Drawing.Size(260, 162);
@@ -66,7 +66,7 @@
             // 
             // helicopterTransportControl
             // 
-            this.helicopterTransportControl.HelicopterTransport = null;
+            //this.helicopterTransportControl.HelicopterTransport = null;
             this.helicopterTransportControl.Location = new System.Drawing.Point(3, 33);
             this.helicopterTransportControl.Name = "helicopterTransportControl";
             this.helicopterTransportControl.Size = new System.Drawing.Size(263, 185);

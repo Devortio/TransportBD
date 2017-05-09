@@ -18,6 +18,7 @@ namespace TransportBD.Controls
             InitializeComponent();
         }
 
+        [DefaultValue(null)]
         public HelicopterTransport HelicopterTransport
         {
             get

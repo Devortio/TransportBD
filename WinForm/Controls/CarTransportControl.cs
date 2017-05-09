@@ -11,12 +11,14 @@ using Model;
 
 namespace TransportBD.Controls
 {
+    [DefaultValue(0)]
     public partial class CarTransportControl : UserControl
     {
         public CarTransportControl()
         {
             InitializeComponent();
         }
+
 
         public CarTransport CarTransport
         {

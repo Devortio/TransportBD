@@ -19,7 +19,7 @@ namespace TransportBD.Controls
             carTransportControl.Visible = false;
             helicopterTransportControl.Visible = false;
         }
-
+        [DefaultValue(null)]
         public ITransport Transport
         {
             get
