@@ -169,7 +169,7 @@
             // 
             // iTransportBindingSource
             // 
-            this.iTransportBindingSource.DataSource = typeof(Model.ITransport);
+            //this.iTransportBindingSource.DataSource = typeof(Model.ITransport);
             // 
             // labelWear
             // 

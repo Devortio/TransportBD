@@ -67,6 +67,24 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CarTransportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CarTransportControl.Designer.cs">
+      <DependentUpon>CarTransportControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HelicopterTransportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HelicopterTransportControl.Designer.cs">
+      <DependentUpon>HelicopterTransportControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TransportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TransportControl.Designer.cs">
+      <DependentUpon>TransportControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateObjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +110,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CarTransportControl.resx">
+      <DependentUpon>CarTransportControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HelicopterTransportControl.resx">
+      <DependentUpon>HelicopterTransportControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TransportControl.resx">
+      <DependentUpon>TransportControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateObjectForm.resx">
       <DependentUpon>CreateObjectForm.cs</DependentUpon>
