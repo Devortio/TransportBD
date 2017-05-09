@@ -28,40 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelFuelType = new System.Windows.Forms.Label();
-            this.comboBoxFuelType = new System.Windows.Forms.ComboBox();
+            this.labelTransportType = new System.Windows.Forms.Label();
+            this.comboBoxTransportType = new System.Windows.Forms.ComboBox();
+            this.carTransportControl = new TransportBD.Controls.CarTransportControl();
+            this.helicopterTransportControl = new TransportBD.Controls.HelicopterTransportControl();
             this.SuspendLayout();
             // 
-            // labelFuelType
+            // labelTransportType
             // 
-            this.labelFuelType.AutoSize = true;
-            this.labelFuelType.Location = new System.Drawing.Point(5, 6);
-            this.labelFuelType.Name = "labelFuelType";
-            this.labelFuelType.Size = new System.Drawing.Size(73, 13);
-            this.labelFuelType.TabIndex = 58;
-            this.labelFuelType.Text = "Тип топлива:";
+            this.labelTransportType.AutoSize = true;
+            this.labelTransportType.Location = new System.Drawing.Point(5, 6);
+            this.labelTransportType.Name = "labelTransportType";
+            this.labelTransportType.Size = new System.Drawing.Size(73, 13);
+            this.labelTransportType.TabIndex = 58;
+            this.labelTransportType.Text = "Тип топлива:";
             // 
-            // comboBoxFuelType
+            // comboBoxTransportType
             // 
-            this.comboBoxFuelType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFuelType.FormattingEnabled = true;
-            this.comboBoxFuelType.Items.AddRange(new object[] {
+            this.comboBoxTransportType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTransportType.FormattingEnabled = true;
+            this.comboBoxTransportType.Items.AddRange(new object[] {
             "Бензин",
             "Дизель",
             "Газ"});
-            this.comboBoxFuelType.Location = new System.Drawing.Point(121, 3);
-            this.comboBoxFuelType.Name = "comboBoxFuelType";
-            this.comboBoxFuelType.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxFuelType.TabIndex = 57;
+            this.comboBoxTransportType.Location = new System.Drawing.Point(121, 3);
+            this.comboBoxTransportType.Name = "comboBoxTransportType";
+            this.comboBoxTransportType.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxTransportType.TabIndex = 57;
+            // 
+            // carTransportControl
+            // 
+            this.carTransportControl.CarTransport = null;
+            this.carTransportControl.Location = new System.Drawing.Point(0, 26);
+            this.carTransportControl.Name = "carTransportControl";
+            this.carTransportControl.Size = new System.Drawing.Size(260, 162);
+            this.carTransportControl.TabIndex = 59;
+            // 
+            // helicopterTransportControl
+            // 
+            this.helicopterTransportControl.HelicopterTransport = null;
+            this.helicopterTransportControl.Location = new System.Drawing.Point(3, 33);
+            this.helicopterTransportControl.Name = "helicopterTransportControl";
+            this.helicopterTransportControl.Size = new System.Drawing.Size(263, 185);
+            this.helicopterTransportControl.TabIndex = 60;
             // 
             // TransportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelFuelType);
-            this.Controls.Add(this.comboBoxFuelType);
+            this.Controls.Add(this.helicopterTransportControl);
+            this.Controls.Add(this.carTransportControl);
+            this.Controls.Add(this.labelTransportType);
+            this.Controls.Add(this.comboBoxTransportType);
             this.Name = "TransportControl";
-            this.Size = new System.Drawing.Size(331, 381);
+            this.Size = new System.Drawing.Size(277, 227);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -69,7 +89,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelFuelType;
-        private System.Windows.Forms.ComboBox comboBoxFuelType;
+        private System.Windows.Forms.Label labelTransportType;
+        private System.Windows.Forms.ComboBox comboBoxTransportType;
+        private CarTransportControl carTransportControl;
+        private HelicopterTransportControl helicopterTransportControl;
     }
 }
