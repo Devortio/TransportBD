@@ -128,7 +128,7 @@
             this.labelMark.Name = "labelMark";
             this.labelMark.Size = new System.Drawing.Size(112, 13);
             this.labelMark.TabIndex = 60;
-            this.labelMark.Text = "Марка транспортаж:";
+            this.labelMark.Text = "Марка транспорта:";
             // 
             // textBoxFuelConsumption
             // 

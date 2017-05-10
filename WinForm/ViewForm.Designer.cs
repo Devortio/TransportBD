@@ -32,13 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewForm));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridContent = new System.Windows.Forms.DataGridView();
-            this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iTransportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,10 +60,17 @@
             this.textBoxDistance = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonTest = new System.Windows.Forms.Button();
+            this.markDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuelConsumptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iTransportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.transportControl = new TransportBD.Controls.TransportControl();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,9 +85,11 @@
             // 
             // dataGridContent
             // 
-            this.dataGridContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridContent.AutoGenerateColumns = false;
+            this.dataGridContent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.markDataGridViewTextBoxColumn,
@@ -105,52 +107,6 @@
             this.dataGridContent.Size = new System.Drawing.Size(604, 324);
             this.dataGridContent.TabIndex = 7;
             this.dataGridContent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridContent_CellClick);
-            // 
-            // markDataGridViewTextBoxColumn
-            // 
-            this.markDataGridViewTextBoxColumn.DataPropertyName = "Mark";
-            this.markDataGridViewTextBoxColumn.HeaderText = "Марка";
-            this.markDataGridViewTextBoxColumn.Name = "markDataGridViewTextBoxColumn";
-            this.markDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // wearDataGridViewTextBoxColumn
-            // 
-            this.wearDataGridViewTextBoxColumn.DataPropertyName = "Wear";
-            this.wearDataGridViewTextBoxColumn.HeaderText = "Степень износа";
-            this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
-            this.wearDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speedDataGridViewTextBoxColumn
-            // 
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Скорость";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currentVolumeDataGridViewTextBoxColumn
-            // 
-            this.currentVolumeDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolume";
-            this.currentVolumeDataGridViewTextBoxColumn.HeaderText = "Объем бака";
-            this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
-            this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fuelConsumptionDataGridViewTextBoxColumn
-            // 
-            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
-            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
-            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
-            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // FuelType
-            // 
-            this.FuelType.DataPropertyName = "FuelType";
-            this.FuelType.HeaderText = "Тип топлива";
-            this.FuelType.Name = "FuelType";
-            this.FuelType.ReadOnly = true;
-            // 
-            // iTransportBindingSource
-            // 
-            this.iTransportBindingSource.DataSource = typeof(Model.ITransport);
             // 
             // menuStrip1
             // 
@@ -367,6 +323,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(619, 34);
@@ -391,6 +348,7 @@
             // 
             // textBoxDistance
             // 
+            this.textBoxDistance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDistance.Location = new System.Drawing.Point(780, 356);
             this.textBoxDistance.Name = "textBoxDistance";
             this.textBoxDistance.Size = new System.Drawing.Size(100, 20);
@@ -409,7 +367,7 @@
             // 
             // buttonTest
             // 
-            this.buttonTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonTest.Location = new System.Drawing.Point(886, 354);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(75, 23);
@@ -418,8 +376,55 @@
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
+            // markDataGridViewTextBoxColumn
+            // 
+            this.markDataGridViewTextBoxColumn.DataPropertyName = "Mark";
+            this.markDataGridViewTextBoxColumn.HeaderText = "Марка";
+            this.markDataGridViewTextBoxColumn.Name = "markDataGridViewTextBoxColumn";
+            this.markDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wearDataGridViewTextBoxColumn
+            // 
+            this.wearDataGridViewTextBoxColumn.DataPropertyName = "Wear";
+            this.wearDataGridViewTextBoxColumn.HeaderText = "Степень износа";
+            this.wearDataGridViewTextBoxColumn.Name = "wearDataGridViewTextBoxColumn";
+            this.wearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speedDataGridViewTextBoxColumn
+            // 
+            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
+            this.speedDataGridViewTextBoxColumn.HeaderText = "Скорость";
+            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
+            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currentVolumeDataGridViewTextBoxColumn
+            // 
+            this.currentVolumeDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolume";
+            this.currentVolumeDataGridViewTextBoxColumn.HeaderText = "Объем бака";
+            this.currentVolumeDataGridViewTextBoxColumn.Name = "currentVolumeDataGridViewTextBoxColumn";
+            this.currentVolumeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fuelConsumptionDataGridViewTextBoxColumn
+            // 
+            this.fuelConsumptionDataGridViewTextBoxColumn.DataPropertyName = "FuelConsumption";
+            this.fuelConsumptionDataGridViewTextBoxColumn.HeaderText = "Расход топлива";
+            this.fuelConsumptionDataGridViewTextBoxColumn.Name = "fuelConsumptionDataGridViewTextBoxColumn";
+            this.fuelConsumptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // FuelType
+            // 
+            this.FuelType.DataPropertyName = "FuelType";
+            this.FuelType.HeaderText = "Тип топлива";
+            this.FuelType.Name = "FuelType";
+            this.FuelType.ReadOnly = true;
+            // 
+            // iTransportBindingSource
+            // 
+            this.iTransportBindingSource.DataSource = typeof(Model.ITransport);
+            // 
             // transportControl
             // 
+            this.transportControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.transportControl.Location = new System.Drawing.Point(622, 52);
             this.transportControl.Name = "transportControl";
             this.transportControl.Size = new System.Drawing.Size(277, 227);
@@ -449,13 +454,14 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(989, 456);
             this.Name = "ViewForm";
             this.Text = "TransportDB";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
