@@ -23,8 +23,6 @@ namespace TransportBD.Controls
         {
             get
             {
-                if (textBoxMark.Text == string.Empty)
-                    return null;
                 return new HelicopterTransport
                 {
                     Mark = textBoxMark.Text,
@@ -38,13 +36,16 @@ namespace TransportBD.Controls
             }
             set
             {
-                textBoxMark.Text = Convert.ToString(value.Mark);
-                textBoxCurrentVolume.Text = Convert.ToString(value.CurrentVolume);
-                textBoxFuelConsumption.Text = Convert.ToString(value.FuelConsumption);
-                textBoxWear.Text = Convert.ToString(value.Wear);
-                textBoxSpeed.Text = Convert.ToString(value.Speed);
-                textBoxFuelDensity.Text = Convert.ToString(value.FuelDensity);
-                comboBoxFuelType.Text = Convert.ToString(value.FuelType);
+                if (value != null)
+                {
+                    textBoxMark.Text = Convert.ToString(value.Mark);
+                    textBoxCurrentVolume.Text = Convert.ToString(value.CurrentVolume);
+                    textBoxFuelConsumption.Text = Convert.ToString(value.FuelConsumption);
+                    textBoxWear.Text = Convert.ToString(value.Wear);
+                    textBoxSpeed.Text = Convert.ToString(value.Speed);
+                    textBoxFuelDensity.Text = Convert.ToString(value.FuelDensity);
+                    comboBoxFuelType.Text = Convert.ToString(value.FuelType);
+                }
             }
         }
 

@@ -23,8 +23,6 @@ namespace TransportBD.Controls
         {
             get
             {
-                if (textBoxMark.Text == string.Empty)
-                    return null;
                 return new CarTransport
                 {
                     Mark = textBoxMark.Text,
