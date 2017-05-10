@@ -258,7 +258,7 @@ namespace TransportBD
                         case "Тип топлива":
                             {
                                 iTransportBindingSource.DataSource = _transportList.FindAll(
-                                transport => transport.FuelType.ToString() == comboBoxSearchFuelType.SelectedText);
+                                transport => transport.FuelType.ToString() == (string)comboBoxSearchFuelType.SelectedItem);
                                 break;
                             }
                         case "Расход топлива":
@@ -428,6 +428,19 @@ namespace TransportBD
         private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxSearchFuelType.Visible = (string)comboBoxSearch.SelectedItem == "Тип топлива";
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            var transport = (ITransport) iTransportBindingSource.Current;
+            if (transport.IsCanBeOvercomeDistance(Convert.ToDouble(textBoxDistance.Text)))
+            {
+                _messageServices.ShowMessage("На данном транспорте возможен проезд.");
+            }
+            else
+            {
+                _messageServices.ShowMessage("Проезд невозможен.");
+            }
         }
     }
 }

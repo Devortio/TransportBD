@@ -62,7 +62,6 @@
             this.comboBoxSearch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
-            this.transportBaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxSearchFuelType = new System.Windows.Forms.ComboBox();
             this.textBoxDistance = new System.Windows.Forms.TextBox();
@@ -72,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transportBaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -330,6 +328,7 @@
             // comboBoxSearch
             // 
             this.comboBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSearch.FormattingEnabled = true;
             this.comboBoxSearch.Items.AddRange(new object[] {
             "Марка",
@@ -366,10 +365,6 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // transportBaseBindingSource
-            // 
-            this.transportBaseBindingSource.DataSource = typeof(Model.TransportBase);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -383,14 +378,12 @@
             // comboBoxSearchFuelType
             // 
             this.comboBoxSearchFuelType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSearchFuelType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSearchFuelType.FormattingEnabled = true;
             this.comboBoxSearchFuelType.Items.AddRange(new object[] {
-            "Марка",
-            "Степень износа",
-            "Объем бака",
-            "Скорость",
-            "Тип топлива",
-            "Расход топлива"});
+            "Бензин",
+            "Дизель",
+            "Газ"});
             this.comboBoxSearchFuelType.Location = new System.Drawing.Point(749, 386);
             this.comboBoxSearchFuelType.Name = "comboBoxSearchFuelType";
             this.comboBoxSearchFuelType.Size = new System.Drawing.Size(131, 21);
@@ -423,6 +416,7 @@
             this.buttonTest.TabIndex = 28;
             this.buttonTest.Text = "Проверка";
             this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // transportControl
             // 
@@ -462,7 +456,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transportBaseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -504,7 +497,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn currentVolumeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fuelConsumptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FuelType;
-        private System.Windows.Forms.BindingSource transportBaseBindingSource;
         private Controls.TransportControl transportControl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxSearchFuelType;
