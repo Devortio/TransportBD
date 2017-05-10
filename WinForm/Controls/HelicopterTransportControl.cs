@@ -63,6 +63,7 @@ namespace TransportBD.Controls
                     textBoxFuelConsumption.ReadOnly = true;
                     textBoxSpeed.ReadOnly = true;
                     textBoxFuelDensity.ReadOnly = true;
+                    comboBoxFuelType.Enabled = false;
                 }
                 else
                 {
@@ -72,6 +73,7 @@ namespace TransportBD.Controls
                     textBoxFuelConsumption.ReadOnly = false;
                     textBoxSpeed.ReadOnly = false;
                     textBoxFuelDensity.ReadOnly = false;
+                    comboBoxFuelType.Enabled = true;
                 }
             }
         }

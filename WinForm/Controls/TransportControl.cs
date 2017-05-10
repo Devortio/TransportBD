@@ -67,11 +67,13 @@ namespace TransportBD.Controls
                 {
                     carTransportControl.ReadOnly = true;
                     helicopterTransportControl.ReadOnly = true;
+                    comboBoxTransportType.Enabled = false;
                 }
                 else
                 {
                     carTransportControl.ReadOnly = false;
                     helicopterTransportControl.ReadOnly = false;
+                    comboBoxTransportType.Enabled = true;
                 }
             }
         }

@@ -39,26 +39,25 @@
             this.labelTransportType.AutoSize = true;
             this.labelTransportType.Location = new System.Drawing.Point(5, 6);
             this.labelTransportType.Name = "labelTransportType";
-            this.labelTransportType.Size = new System.Drawing.Size(73, 13);
+            this.labelTransportType.Size = new System.Drawing.Size(90, 13);
             this.labelTransportType.TabIndex = 58;
-            this.labelTransportType.Text = "Тип топлива:";
+            this.labelTransportType.Text = "Тип транспорта:";
             // 
             // comboBoxTransportType
             // 
             this.comboBoxTransportType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTransportType.FormattingEnabled = true;
             this.comboBoxTransportType.Items.AddRange(new object[] {
-            "Бензин",
-            "Дизель",
-            "Газ"});
+            "Машина",
+            "Вертолет"});
             this.comboBoxTransportType.Location = new System.Drawing.Point(121, 3);
             this.comboBoxTransportType.Name = "comboBoxTransportType";
             this.comboBoxTransportType.Size = new System.Drawing.Size(100, 21);
             this.comboBoxTransportType.TabIndex = 57;
+            this.comboBoxTransportType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransportType_SelectedIndexChanged);
             // 
             // carTransportControl
             // 
-            //this.carTransportControl.CarTransport = null;
             this.carTransportControl.Location = new System.Drawing.Point(0, 26);
             this.carTransportControl.Name = "carTransportControl";
             this.carTransportControl.Size = new System.Drawing.Size(260, 162);
@@ -66,7 +65,6 @@
             // 
             // helicopterTransportControl
             // 
-            //this.helicopterTransportControl.HelicopterTransport = null;
             this.helicopterTransportControl.Location = new System.Drawing.Point(3, 33);
             this.helicopterTransportControl.Name = "helicopterTransportControl";
             this.helicopterTransportControl.Size = new System.Drawing.Size(263, 185);

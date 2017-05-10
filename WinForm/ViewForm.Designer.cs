@@ -63,12 +63,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
             this.transportBaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.transportControl = new TransportBD.Controls.TransportControl();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxSearchFuelType = new System.Windows.Forms.ComboBox();
             this.textBoxDistance = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonTest = new System.Windows.Forms.Button();
+            this.transportControl = new TransportBD.Controls.TransportControl();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -106,6 +106,7 @@
             this.dataGridContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridContent.Size = new System.Drawing.Size(604, 324);
             this.dataGridContent.TabIndex = 7;
+            this.dataGridContent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridContent_CellClick);
             // 
             // markDataGridViewTextBoxColumn
             // 
@@ -341,6 +342,7 @@
             this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSearch.TabIndex = 20;
+            this.comboBoxSearch.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -356,7 +358,7 @@
             // buttonReset
             // 
             this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonReset.Location = new System.Drawing.Point(886, 353);
+            this.buttonReset.Location = new System.Drawing.Point(255, 384);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 22;
@@ -367,13 +369,6 @@
             // transportBaseBindingSource
             // 
             this.transportBaseBindingSource.DataSource = typeof(Model.TransportBase);
-            // 
-            // transportControl
-            // 
-            this.transportControl.Location = new System.Drawing.Point(622, 52);
-            this.transportControl.Name = "transportControl";
-            this.transportControl.Size = new System.Drawing.Size(277, 227);
-            this.transportControl.TabIndex = 23;
             // 
             // label3
             // 
@@ -396,14 +391,14 @@
             "Скорость",
             "Тип топлива",
             "Расход топлива"});
-            this.comboBoxSearchFuelType.Location = new System.Drawing.Point(749, 387);
+            this.comboBoxSearchFuelType.Location = new System.Drawing.Point(749, 386);
             this.comboBoxSearchFuelType.Name = "comboBoxSearchFuelType";
             this.comboBoxSearchFuelType.Size = new System.Drawing.Size(131, 21);
             this.comboBoxSearchFuelType.TabIndex = 25;
             // 
             // textBoxDistance
             // 
-            this.textBoxDistance.Location = new System.Drawing.Point(699, 285);
+            this.textBoxDistance.Location = new System.Drawing.Point(780, 356);
             this.textBoxDistance.Name = "textBoxDistance";
             this.textBoxDistance.Size = new System.Drawing.Size(100, 20);
             this.textBoxDistance.TabIndex = 26;
@@ -413,28 +408,35 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(619, 286);
+            this.label4.Location = new System.Drawing.Point(700, 357);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 15);
             this.label4.TabIndex = 27;
             this.label4.Text = "Дистанция:";
             // 
-            // button1
+            // buttonTest
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(805, 283);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Проверка";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonTest.Location = new System.Drawing.Point(886, 354);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(75, 23);
+            this.buttonTest.TabIndex = 28;
+            this.buttonTest.Text = "Проверка";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            // 
+            // transportControl
+            // 
+            this.transportControl.Location = new System.Drawing.Point(622, 52);
+            this.transportControl.Name = "transportControl";
+            this.transportControl.Size = new System.Drawing.Size(277, 227);
+            this.transportControl.TabIndex = 23;
             // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 417);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxDistance);
             this.Controls.Add(this.comboBoxSearchFuelType);
@@ -508,7 +510,7 @@
         private System.Windows.Forms.ComboBox comboBoxSearchFuelType;
         private System.Windows.Forms.TextBox textBoxDistance;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTest;
     }
 }
 

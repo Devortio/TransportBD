@@ -390,7 +390,8 @@ namespace TransportBD
             textBoxDistance.Enabled = itemsEnable;
             label2.Enabled = itemsEnable;
             label4.Enabled = itemsEnable;
-            transportControl.Enabled = itemsEnable;
+            buttonTest.Enabled = itemsEnable;
+            transportControl.ReadOnly = true;
         }
 
         /// <summary>
@@ -426,11 +427,7 @@ namespace TransportBD
 
         private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxSearch.SelectedText == "Тип топлива")
-            {
-                comboBoxSearchFuelType.Visible = true;
-            }
-            comboBoxSearchFuelType.Visible = false;
+            comboBoxSearchFuelType.Visible = (string)comboBoxSearch.SelectedItem == "Тип топлива";
         }
     }
 }

@@ -49,6 +49,7 @@
             this.cofAddButton.TabIndex = 1;
             this.cofAddButton.Text = "Добавить";
             this.cofAddButton.UseVisualStyleBackColor = true;
+            this.cofAddButton.Click += new System.EventHandler(this.cofAddButton_Click);
             // 
             // cofCancelButton
             // 
@@ -59,6 +60,7 @@
             this.cofCancelButton.TabIndex = 2;
             this.cofCancelButton.Text = "Отмена";
             this.cofCancelButton.UseVisualStyleBackColor = true;
+            this.cofCancelButton.Click += new System.EventHandler(this.cofCancelButton_Click);
             // 
             // toolTip
             // 

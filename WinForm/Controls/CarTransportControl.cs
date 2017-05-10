@@ -11,7 +11,6 @@ using Model;
 
 namespace TransportBD.Controls
 {
-    [DefaultValue(0)]
     public partial class CarTransportControl : UserControl
     {
         public CarTransportControl()
@@ -19,7 +18,7 @@ namespace TransportBD.Controls
             InitializeComponent();
         }
 
-
+        [DefaultValue(null)]
         public CarTransport CarTransport
         {
             get
@@ -38,13 +37,16 @@ namespace TransportBD.Controls
             }
             set
             {
-                textBoxMark.Text = Convert.ToString(value.Mark);
-                textBoxCurrentVolume.Text = Convert.ToString(value.CurrentVolume);
-                textBoxFuelConsumption.Text = Convert.ToString(value.FuelConsumption);
-                textBoxWear.Text = Convert.ToString(value.Wear);
-                textBoxSpeed.Text = Convert.ToString(value.Speed);
-                comboBoxFuelType.Text = Convert.ToString(value.FuelType);
-                textBoxSpeed.Text = Convert.ToString(value.Speed);
+                if (value != null)
+                {
+                    textBoxMark.Text = Convert.ToString(value.Mark);
+                    textBoxCurrentVolume.Text = Convert.ToString(value.CurrentVolume);
+                    textBoxFuelConsumption.Text = Convert.ToString(value.FuelConsumption);
+                    textBoxWear.Text = Convert.ToString(value.Wear);
+                    textBoxSpeed.Text = Convert.ToString(value.Speed);
+                    comboBoxFuelType.Text = Convert.ToString(value.FuelType);
+                    textBoxSpeed.Text = Convert.ToString(value.Speed);
+                }
             }
         }
 
@@ -62,6 +64,7 @@ namespace TransportBD.Controls
                     textBoxCurrentVolume.ReadOnly = true;
                     textBoxFuelConsumption.ReadOnly = true;
                     textBoxSpeed.ReadOnly = true;
+                    comboBoxFuelType.Enabled = false;
                 }
                 else
                 {
@@ -70,6 +73,7 @@ namespace TransportBD.Controls
                     textBoxCurrentVolume.ReadOnly = false;
                     textBoxFuelConsumption.ReadOnly = false;
                     textBoxSpeed.ReadOnly = false;
+                    comboBoxFuelType.Enabled = true;
                 }
             }
         }
