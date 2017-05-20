@@ -72,6 +72,11 @@ namespace TransportBD.Controls
             }
         }
 
+        /// <summary>
+        /// Выборка транспорта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBoxTransportType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxTransportType.SelectedIndex == 0)
