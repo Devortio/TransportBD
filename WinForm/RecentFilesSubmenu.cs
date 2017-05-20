@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransportBD
 {
-    class RecentFilesSubmenu
+    class RecentFilesSubMenu
     {
         private List<string> _recentFiles = new List<string>();
 

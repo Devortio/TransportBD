@@ -13,7 +13,7 @@ namespace TransportBD
         private List<ITransport> _transportList;
         private readonly MessageService _messageServices = new MessageService();
         private bool _pointFixer;
-        private RecentFilesSubmenu _recentFiles = new RecentFilesSubmenu();
+        private RecentFilesSubMenu _recentFiles = new RecentFilesSubMenu();
 
         public ViewForm()
         {
