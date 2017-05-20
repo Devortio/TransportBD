@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Model;
 
@@ -12,6 +13,7 @@ namespace TransportBD
         private List<ITransport> _transportList;
         private readonly MessageService _messageServices = new MessageService();
         private bool _pointFixer;
+        private RecentFilesSubmenu _recentFiles = new RecentFilesSubmenu();
 
         public ViewForm()
         {
@@ -50,12 +52,55 @@ namespace TransportBD
                 if (ofd.FileName != null)
                 {
                     _filePath = ofd.FileName;
+                    LoadRecentFiles(_filePath);
                     _transportList = Serialization.Deserialize(_filePath);
                     iTransportBindingSource.DataSource = _transportList;
                     PointFixer(true);
                     ItemsEnable(true);
                 }
             }
+        }
+
+        /// <summary>
+        /// Загрузка 'Недавних файлов' в лист
+        /// </summary>
+        /// <param name="filePath"></param>
+        private void LoadRecentFiles(string filePath)
+        {
+            _recentFiles.AddRecentFiles(filePath);
+
+            if (_recentFiles.RecentFilesList().Count > 0)
+            {
+                recentFilesToolStripMenuItem.DropDownItems.Clear();
+                AddRecentFilesToMenu();
+            }
+        }
+
+        /// <summary>
+        /// Добавление 'Недавних файлов' в подменю
+        /// </summary>
+        private void AddRecentFilesToMenu()
+        {
+            for (var i = 0; i < _recentFiles.RecentFilesList().Count; i++)
+            {
+                recentFilesToolStripMenuItem.DropDownItems.Add(Path.GetFileName(_recentFiles.RecentFilesList()[i]));
+                recentFilesToolStripMenuItem.DropDownItems[i].Click += OnClick;
+            }
+        }
+
+        /// <summary>
+        /// Открытие файла из подменю 'Недавние файлы'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        private void OnClick(object sender, EventArgs eventArgs)
+        {
+            var index = recentFilesToolStripMenuItem.DropDownItems.IndexOf((ToolStripDropDownItem) sender);
+            _filePath = _recentFiles.RecentFilesList()[index];
+            _transportList = Serialization.Deserialize(_filePath);
+            iTransportBindingSource.DataSource = _transportList;
+            PointFixer(true);
+            LoadRecentFiles(_recentFiles.RecentFilesList()[index]);
         }
 
         /// <summary>
@@ -391,6 +436,9 @@ namespace TransportBD
             label2.Enabled = itemsEnable;
             label4.Enabled = itemsEnable;
             buttonTest.Enabled = itemsEnable;
+            saveAsToolStripMenuItem.Enabled = itemsEnable;
+            saveToolStripMenuItem.Enabled = itemsEnable;
+            editToolStripMenuItem.Enabled = itemsEnable;
             transportControl.ReadOnly = true;
         }
 
@@ -430,17 +478,27 @@ namespace TransportBD
             comboBoxSearchFuelType.Visible = (string)comboBoxSearch.SelectedItem == "Тип топлива";
         }
 
+        /// <summary>
+        /// Проверка на проезд.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonTest_Click(object sender, EventArgs e)
         {
             var transport = (ITransport) iTransportBindingSource.Current;
-            if (transport.IsCanBeOvercomeDistance(Convert.ToDouble(textBoxDistance.Text)))
+            if (textBoxDistance.Text != string.Empty)
             {
-                _messageServices.ShowMessage("На данном транспорте возможен проезд.");
+                if (transport.IsCanBeOvercomeDistance(Convert.ToDouble(textBoxDistance.Text)))
+                {
+                    _messageServices.ShowMessage("Проезд возможен.");
+                }
+                else
+                {
+                    _messageServices.ShowMessage("Проезд невозможен.");
+                }
             }
-            else
-            {
-                _messageServices.ShowMessage("Проезд невозможен.");
-            }
+            else 
+            _messageServices.ShowExclamation("Поле 'Дистанция' не может быть пустым!");
         }
     }
 }

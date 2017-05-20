@@ -19,7 +19,7 @@ namespace TransportBD.Controls
             carTransportControl.Visible = false;
             helicopterTransportControl.Visible = false;
         }
-        [DefaultValue(null)]
+
         public ITransport Transport
         {
             get
@@ -28,13 +28,7 @@ namespace TransportBD.Controls
                 {
                     return carTransportControl.CarTransport;
                 }
-
-                if (comboBoxTransportType.SelectedIndex == 1)
-                {
-                    return helicopterTransportControl.HelicopterTransport;
-                }
-
-                return null;
+                return helicopterTransportControl.HelicopterTransport;
             }
             set
             {
