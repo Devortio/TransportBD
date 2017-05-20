@@ -8,7 +8,7 @@ namespace TransportBD
 {
     class RecentFilesSubmenu
     {
-        private List<string> _recentFiles= new List<string>();
+        private List<string> _recentFiles = new List<string>();
 
         /// <summary>
         /// Добавление файлов в лист
