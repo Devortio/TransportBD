@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,12 +16,27 @@ namespace TransportBD
         private bool _pointFixer;
         private RecentFilesSubMenu _recentFiles = new RecentFilesSubMenu();
 
-        public ViewForm()
+        public ViewForm(string[] args)
         {
             InitializeComponent();
             _pointFixer = true;
             ItemsEnable(false);
             comboBoxSearchFuelType.Visible = false;
+            if (args.Length > 0)
+            {
+                try
+                {
+                    _transportList = Serialization.Deserialize(args[0]);
+                }
+                catch (ArgumentException)
+                {
+                    _messageServices.ShowError("Error");
+                }
+                iTransportBindingSource.DataSource = _transportList;
+                _pointFixer = true;
+                ItemsEnable(true);
+            }
+
         }
 
         /// <summary>
