@@ -9,12 +9,11 @@ namespace TransportBD
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            ViewForm form = new ViewForm();         
-            Application.Run(form); 
+            Application.SetCompatibleTextRenderingDefault(false);        
+            Application.Run(new ViewForm(args)); 
         }
     }
 }
